@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperCyclingWorld.Web", "SuperCyclingWorld.Web\SuperCyclingWorld.Web.csproj", "{F97152E1-0452-4446-B9D5-F28ACA45C277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperCyclingWorld.Core", "SuperCyclingWorld.Core\SuperCyclingWorld.Core.csproj", "{1DD3D4CB-18C0-4051-8853-1907CE3426D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F97152E1-0452-4446-B9D5-F28ACA45C277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97152E1-0452-4446-B9D5-F28ACA45C277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97152E1-0452-4446-B9D5-F28ACA45C277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97152E1-0452-4446-B9D5-F28ACA45C277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD3D4CB-18C0-4051-8853-1907CE3426D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD3D4CB-18C0-4051-8853-1907CE3426D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD3D4CB-18C0-4051-8853-1907CE3426D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD3D4CB-18C0-4051-8853-1907CE3426D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F8C7C82-CA3A-47BB-B6B6-E297FF38A105}
+	EndGlobalSection
+EndGlobal
