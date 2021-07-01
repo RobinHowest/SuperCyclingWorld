@@ -9,6 +9,11 @@ namespace SuperCyclingWorld.Core.Entities
         public Guid Id { get; set; }
         public string Clubnaam { get; set; }
 
+        public Club()
+        {
+
+        }
+
         public Club(string clubnaam)
         {
             Clubnaam = clubnaam;

@@ -6,10 +6,15 @@ namespace SuperCyclingWorld.Core.Entities.Base
 {
     public abstract class Persoon
     {
-        public Guid Id { get; private set; }
-        public string Voornaam { get; protected set; }
-        public string Achternaam { get; protected set; }
-        public ICollection<Wielrenner> Wielrenners { get; protected set; }
+        public Guid Id { get; set; }
+        public string Voornaam { get; set; }
+        public string Achternaam { get; set; }
+        public ICollection<Wielrenner> Wielrenners { get; set; }
+
+        public Persoon()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public Persoon(string voornaam, string achternaam)
         {

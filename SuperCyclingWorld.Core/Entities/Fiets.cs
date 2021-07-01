@@ -11,6 +11,11 @@ namespace SuperCyclingWorld.Core.Entities
         public string Merk { get; set; }
         public Guid WielrennerId { get; set; }
 
+        public Fiets()
+        {
+
+        }
+
         public Fiets(string zadel, string merk)
         {
             Zadel = zadel;

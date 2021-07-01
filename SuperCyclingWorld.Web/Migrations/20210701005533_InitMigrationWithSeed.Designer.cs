@@ -10,8 +10,8 @@ using SocialCyclingWorld.Web.Data;
 namespace SuperCyclingWorld.Web.Migrations
 {
     [DbContext(typeof(SCWDbContext))]
-    [Migration("20210701001107_InitMigration")]
-    partial class InitMigration
+    [Migration("20210701005533_InitMigrationWithSeed")]
+    partial class InitMigrationWithSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,10 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.HasIndex("SupporterId");
 
                     b.ToTable("Clubs");
+
+                    b.HasData(
+                        new { Id = new Guid("f5aca5b9-ced7-4d06-8588-1c629c014e1f"), Clubnaam = "WTC" }
+                    );
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Fiets", b =>
@@ -53,6 +57,10 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.HasIndex("WielrennerId");
 
                     b.ToTable("Fietsen");
+
+                    b.HasData(
+                        new { Id = new Guid("75df8319-a9f0-4b6a-a250-2ffcaebc9392"), Merk = "B-Twin", WielrennerId = new Guid("71097bc7-d5ac-4ec5-a6ab-a219aa668769"), Zadel = "Zwart zadel" }
+                    );
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Supporter", b =>
@@ -67,6 +75,10 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Supporters");
+
+                    b.HasData(
+                        new { Id = new Guid("85a7a708-f086-442e-bb65-35a616293177"), Achternaam = "Supporter", Voornaam = "1" }
+                    );
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Wielrenner", b =>
@@ -93,6 +105,10 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.HasIndex("WielrennerId");
 
                     b.ToTable("Wielrenners");
+
+                    b.HasData(
+                        new { Id = new Guid("71097bc7-d5ac-4ec5-a6ab-a219aa668769"), Achternaam = "Franckaert", Voornaam = "Robin" }
+                    );
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Club", b =>

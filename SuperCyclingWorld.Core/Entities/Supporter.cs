@@ -9,6 +9,11 @@ namespace SuperCyclingWorld.Core.Entities
     {
         public ICollection<Club> Clubs { get; set; }
 
+        public Supporter()
+        {
+
+        }
+
         public Supporter(string voornaam, string achternaam) : base(voornaam, achternaam)
         {
 

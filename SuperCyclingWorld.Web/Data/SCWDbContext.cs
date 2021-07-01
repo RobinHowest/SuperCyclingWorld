@@ -18,12 +18,14 @@ namespace SocialCyclingWorld.Web.Data
 
         public SCWDbContext(DbContextOptions<SCWDbContext> options) : base(options) 
         {
-
+            
 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
             DataSeeder.Seed(modelBuilder);
 
             base.OnModelCreating(modelBuilder);

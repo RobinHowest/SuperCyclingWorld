@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SuperCyclingWorld.Web.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class InitMigrationWithSeed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -92,6 +92,26 @@ namespace SuperCyclingWorld.Web.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Clubs",
+                columns: new[] { "Id", "Clubnaam", "SupporterId" },
+                values: new object[] { new Guid("f5aca5b9-ced7-4d06-8588-1c629c014e1f"), "WTC", null });
+
+            migrationBuilder.InsertData(
+                table: "Supporters",
+                columns: new[] { "Id", "Achternaam", "Voornaam" },
+                values: new object[] { new Guid("85a7a708-f086-442e-bb65-35a616293177"), "Supporter", "1" });
+
+            migrationBuilder.InsertData(
+                table: "Wielrenners",
+                columns: new[] { "Id", "Achternaam", "ClubId", "SupporterId", "Voornaam", "WielrennerId" },
+                values: new object[] { new Guid("71097bc7-d5ac-4ec5-a6ab-a219aa668769"), "Franckaert", null, null, "Robin", null });
+
+            migrationBuilder.InsertData(
+                table: "Fietsen",
+                columns: new[] { "Id", "Merk", "WielrennerId", "Zadel" },
+                values: new object[] { new Guid("75df8319-a9f0-4b6a-a250-2ffcaebc9392"), "B-Twin", new Guid("71097bc7-d5ac-4ec5-a6ab-a219aa668769"), "Zwart zadel" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clubs_SupporterId",
