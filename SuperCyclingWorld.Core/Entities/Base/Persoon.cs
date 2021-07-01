@@ -9,8 +9,7 @@ namespace SuperCyclingWorld.Core.Entities.Base
         public Guid Id { get; set; }
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
-        public ICollection<Wielrenner> Wielrenners { get; set; }
-
+        public ICollection<FanRegistratie> Wielrenners { get; set; }
         public Persoon()
         {
             Id = Guid.NewGuid();

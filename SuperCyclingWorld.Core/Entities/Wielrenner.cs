@@ -9,7 +9,6 @@ namespace SuperCyclingWorld.Core.Entities
     {
         public Club Club { get; set; }
         public ICollection<Fiets> Fietsen { get; set; }
-
         public Wielrenner()
         {
 

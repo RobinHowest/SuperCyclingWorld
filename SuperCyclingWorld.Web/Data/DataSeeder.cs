@@ -17,19 +17,24 @@ namespace SuperCyclingWorld.Web.Data
                 new Wielrenner {Id = Guid.NewGuid(), Achternaam = "Franckaert", Voornaam = "Robin" }
             };
 
-            var fietsen = new Fiets[]
-            {
-                new Fiets { Id = Guid.NewGuid(), Merk = "B-Twin", Zadel = "Zwart zadel", WielrennerId = wielrenners[0].Id }
-            };
-
             var supporters = new Supporter[]
             {
                 new Supporter {Id = Guid.NewGuid(), Achternaam = "Supporter", Voornaam = "1"}
             };
 
+            var fietsen = new Fiets[]
+            {
+                new Fiets { Id = Guid.NewGuid(), Merk = "B-Twin", Zadel = "Zwart zadel"}
+            };
+
             var clubs = new Club[]
             {
                 new Club {Id = Guid.NewGuid(), Clubnaam = "WTC"}
+            };
+
+            var fanRegistraties = new FanRegistratie[]
+            {
+                new FanRegistratie{ Id = Guid.NewGuid(), SupporterId = supporters[0].Id, WielrennerId = null}
             };
 
             modelBuilder.Entity<Fiets>()
@@ -38,14 +43,14 @@ namespace SuperCyclingWorld.Web.Data
             modelBuilder.Entity<Wielrenner>()
                 .HasData(wielrenners);
 
-       
-
             modelBuilder.Entity<Supporter>()
                 .HasData(supporters);
 
             modelBuilder.Entity<Club>()
                 .HasData(clubs);
 
+            modelBuilder.Entity<FanRegistratie>()
+                .HasData(fanRegistraties);
 
         }
 

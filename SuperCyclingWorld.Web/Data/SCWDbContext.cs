@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperCyclingWorld.Core.Entities;
+using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Web.Data;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,6 @@ namespace SocialCyclingWorld.Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
 
             DataSeeder.Seed(modelBuilder);
 
