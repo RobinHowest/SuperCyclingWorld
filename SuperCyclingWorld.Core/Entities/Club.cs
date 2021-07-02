@@ -8,6 +8,7 @@ namespace SuperCyclingWorld.Core.Entities
     {
         public Guid Id { get; set; }
         public string Clubnaam { get; set; }
+        public ICollection<ClubSupporter> ClubSupporters { get; set; }
 
         public Club()
         {

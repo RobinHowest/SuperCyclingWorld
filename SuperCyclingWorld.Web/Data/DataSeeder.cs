@@ -32,10 +32,7 @@ namespace SuperCyclingWorld.Web.Data
                 new Club {Id = Guid.NewGuid(), Clubnaam = "WTC"}
             };
 
-            var fanRegistraties = new FanRegistratie[]
-            {
-                new FanRegistratie{ Id = Guid.NewGuid(), SupporterId = supporters[0].Id, WielrennerId = null}
-            };
+
 
             modelBuilder.Entity<Fiets>()
                 .HasData(fietsen);
@@ -49,8 +46,7 @@ namespace SuperCyclingWorld.Web.Data
             modelBuilder.Entity<Club>()
                 .HasData(clubs);
 
-            modelBuilder.Entity<FanRegistratie>()
-                .HasData(fanRegistraties);
+
 
         }
 

@@ -26,6 +26,12 @@ namespace SocialCyclingWorld.Web.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<FanRegistratie>()
+                .HasKey(fr => new { fr.SupporterId, fr.WielrennerId });
+
+            modelBuilder.Entity<ClubSupporter>()
+                .HasKey(cs => new { cs.ClubId, cs.SupporterId });
+
             DataSeeder.Seed(modelBuilder);
 
             base.OnModelCreating(modelBuilder);

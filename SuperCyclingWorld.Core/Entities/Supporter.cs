@@ -7,7 +7,7 @@ namespace SuperCyclingWorld.Core.Entities
 {
     public class Supporter : Persoon
     {
-        public ICollection<Club> Clubs { get; set; }
+        public ICollection<ClubSupporter> Clubs { get; set; }
 
         public Supporter()
         {

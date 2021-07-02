@@ -26,39 +26,39 @@ namespace SuperCyclingWorld.Web.Migrations
 
                     b.Property<string>("Clubnaam");
 
-                    b.Property<Guid?>("SupporterId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SupporterId");
 
                     b.ToTable("Clubs");
 
                     b.HasData(
-                        new { Id = new Guid("e50d224c-b9bc-45fd-a190-e61817d0da8a"), Clubnaam = "WTC" }
+                        new { Id = new Guid("244054d3-5270-4d89-84fa-7769c3678ff1"), Clubnaam = "WTC" }
                     );
+                });
+
+            modelBuilder.Entity("SuperCyclingWorld.Core.Entities.ClubSupporter", b =>
+                {
+                    b.Property<Guid>("ClubId");
+
+                    b.Property<Guid>("SupporterId");
+
+                    b.HasKey("ClubId", "SupporterId");
+
+                    b.HasIndex("SupporterId");
+
+                    b.ToTable("ClubSupporter");
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.FanRegistratie", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<Guid>("SupporterId");
 
-                    b.Property<Guid?>("SupporterId");
+                    b.Property<Guid>("WielrennerId");
 
-                    b.Property<Guid?>("WielrennerId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SupporterId");
+                    b.HasKey("SupporterId", "WielrennerId");
 
                     b.HasIndex("WielrennerId");
 
                     b.ToTable("FanRegistratie");
-
-                    b.HasData(
-                        new { Id = new Guid("22182159-ae3a-41ec-a55a-53ac7e10c20b"), SupporterId = new Guid("b1cc3e2b-e230-47b8-b039-a1264c130a3e") }
-                    );
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Fiets", b =>
@@ -79,7 +79,7 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.ToTable("Fietsen");
 
                     b.HasData(
-                        new { Id = new Guid("721606ef-eb96-472d-b0dd-2591203fa0c9"), Merk = "B-Twin", Zadel = "Zwart zadel" }
+                        new { Id = new Guid("5c8aa204-656f-478a-bc6c-4ecdc248c852"), Merk = "B-Twin", Zadel = "Zwart zadel" }
                     );
                 });
 
@@ -97,7 +97,7 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.ToTable("Supporters");
 
                     b.HasData(
-                        new { Id = new Guid("b1cc3e2b-e230-47b8-b039-a1264c130a3e"), Achternaam = "Supporter", Voornaam = "1" }
+                        new { Id = new Guid("8402a8d1-d547-474d-ba4c-d48bcedd7ddf"), Achternaam = "Supporter", Voornaam = "1" }
                     );
                 });
 
@@ -119,26 +119,34 @@ namespace SuperCyclingWorld.Web.Migrations
                     b.ToTable("Wielrenners");
 
                     b.HasData(
-                        new { Id = new Guid("29eb3c12-967c-47ee-8e88-ab3964780f46"), Achternaam = "Franckaert", Voornaam = "Robin" }
+                        new { Id = new Guid("dbde00f4-d56e-4bbc-b431-ca3219a0a59c"), Achternaam = "Franckaert", Voornaam = "Robin" }
                     );
                 });
 
-            modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Club", b =>
+            modelBuilder.Entity("SuperCyclingWorld.Core.Entities.ClubSupporter", b =>
                 {
+                    b.HasOne("SuperCyclingWorld.Core.Entities.Club")
+                        .WithMany("ClubSupporters")
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("SuperCyclingWorld.Core.Entities.Supporter")
                         .WithMany("Clubs")
-                        .HasForeignKey("SupporterId");
+                        .HasForeignKey("SupporterId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.FanRegistratie", b =>
                 {
                     b.HasOne("SuperCyclingWorld.Core.Entities.Supporter")
                         .WithMany("Wielrenners")
-                        .HasForeignKey("SupporterId");
+                        .HasForeignKey("SupporterId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SuperCyclingWorld.Core.Entities.Wielrenner")
                         .WithMany("Wielrenners")
-                        .HasForeignKey("WielrennerId");
+                        .HasForeignKey("WielrennerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SuperCyclingWorld.Core.Entities.Fiets", b =>

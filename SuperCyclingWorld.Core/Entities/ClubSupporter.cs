@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SuperCyclingWorld.Core.Entities
 {
-    public class FanRegistratie
+    public class ClubSupporter
     {
-        public Guid WielrennerId { get; set; }
+        public Guid ClubId { get; set; }
         public Guid SupporterId { get; set; }
     }
 }
