@@ -39,7 +39,7 @@ namespace SuperCyclingWorld.Web.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Voornaam = table.Column<string>(nullable: true),
                     Achternaam = table.Column<string>(nullable: true),
-                    ClubId = table.Column<Guid>(nullable: true)
+                    ClubId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,7 +49,7 @@ namespace SuperCyclingWorld.Web.Migrations
                         column: x => x.ClubId,
                         principalTable: "Clubs",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,7 +107,7 @@ namespace SuperCyclingWorld.Web.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Zadel = table.Column<string>(nullable: true),
                     Merk = table.Column<string>(nullable: true),
-                    WielrennerId = table.Column<Guid>(nullable: true)
+                    WielrennerId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -117,28 +117,71 @@ namespace SuperCyclingWorld.Web.Migrations
                         column: x => x.WielrennerId,
                         principalTable: "Wielrenners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Clubs",
                 columns: new[] { "Id", "Clubnaam" },
-                values: new object[] { new Guid("244054d3-5270-4d89-84fa-7769c3678ff1"), "WTC" });
-
-            migrationBuilder.InsertData(
-                table: "Fietsen",
-                columns: new[] { "Id", "Merk", "WielrennerId", "Zadel" },
-                values: new object[] { new Guid("5c8aa204-656f-478a-bc6c-4ecdc248c852"), "B-Twin", null, "Zwart zadel" });
+                values: new object[,]
+                {
+                    { new Guid("abe765b3-8623-40ef-8e35-86d372a23698"), "WTC" },
+                    { new Guid("79c660e4-8667-4e60-abe3-286d5f49007f"), "DCTV" },
+                    { new Guid("c312c3a9-bd2c-4a98-8167-d9100e17bce7"), "De lustige rijders" },
+                    { new Guid("7268ce67-24f3-403a-9179-ffee1adca253"), "WTC Melsele" },
+                    { new Guid("6434fc64-6499-461b-ab4e-cbefaeafa087"), "The master cyclists" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Supporters",
                 columns: new[] { "Id", "Achternaam", "Voornaam" },
-                values: new object[] { new Guid("8402a8d1-d547-474d-ba4c-d48bcedd7ddf"), "Supporter", "1" });
+                values: new object[,]
+                {
+                    { new Guid("61d87552-0514-4612-b64d-f783da4b26b3"), "The Pooh", "Winnie" },
+                    { new Guid("01dd0181-d64f-4073-b0a6-eae101e296c0"), "Van Achtmaal", "Thomas" },
+                    { new Guid("3633e9cb-8bf7-4324-8500-fe0a67516e28"), "VanKerkhove", "Nico" },
+                    { new Guid("39adae42-a02c-48bd-ac20-b23d123adab7"), "Kronenburg", "Koen" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ClubSupporter",
+                columns: new[] { "ClubId", "SupporterId" },
+                values: new object[,]
+                {
+                    { new Guid("abe765b3-8623-40ef-8e35-86d372a23698"), new Guid("61d87552-0514-4612-b64d-f783da4b26b3") },
+                    { new Guid("c312c3a9-bd2c-4a98-8167-d9100e17bce7"), new Guid("01dd0181-d64f-4073-b0a6-eae101e296c0") }
+                });
 
             migrationBuilder.InsertData(
                 table: "Wielrenners",
                 columns: new[] { "Id", "Achternaam", "ClubId", "Voornaam" },
-                values: new object[] { new Guid("dbde00f4-d56e-4bbc-b431-ca3219a0a59c"), "Franckaert", null, "Robin" });
+                values: new object[,]
+                {
+                    { new Guid("ff336620-9855-4e74-93d7-a2bf92296596"), "Franckaert", new Guid("abe765b3-8623-40ef-8e35-86d372a23698"), "Robin" },
+                    { new Guid("b261748b-01f4-4a7c-bc89-bdbdbb6173d4"), "Jansma", new Guid("79c660e4-8667-4e60-abe3-286d5f49007f"), "Johanna" },
+                    { new Guid("10df0c5f-b9ee-43d4-aacb-b924e8269378"), "Vissers", new Guid("c312c3a9-bd2c-4a98-8167-d9100e17bce7"), "Bert" },
+                    { new Guid("8496ffd1-d49e-4251-8bd8-912b71f3e865"), "Depardieu", new Guid("7268ce67-24f3-403a-9179-ffee1adca253"), "Gerard" },
+                    { new Guid("de154ae1-d8c0-4412-baf9-4fa9a0298c87"), "Van Overmeire", new Guid("6434fc64-6499-461b-ab4e-cbefaeafa087"), "Marc" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "FanRegistratie",
+                columns: new[] { "SupporterId", "WielrennerId" },
+                values: new object[,]
+                {
+                    { new Guid("61d87552-0514-4612-b64d-f783da4b26b3"), new Guid("b261748b-01f4-4a7c-bc89-bdbdbb6173d4") },
+                    { new Guid("39adae42-a02c-48bd-ac20-b23d123adab7"), new Guid("8496ffd1-d49e-4251-8bd8-912b71f3e865") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Fietsen",
+                columns: new[] { "Id", "Merk", "WielrennerId", "Zadel" },
+                values: new object[,]
+                {
+                    { new Guid("042c040e-e93b-4a41-982f-80c30e59855f"), "Moldava", new Guid("ff336620-9855-4e74-93d7-a2bf92296596"), "Geel zadel" },
+                    { new Guid("40ddb9ad-c0ef-4183-9d84-0c7b67d042e9"), "Merckx", new Guid("b261748b-01f4-4a7c-bc89-bdbdbb6173d4"), "Oranje zadel" },
+                    { new Guid("f27c456f-c649-470f-a4f3-513b046f6a17"), "B-Twin", new Guid("8496ffd1-d49e-4251-8bd8-912b71f3e865"), "Zwart zadel" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClubSupporter_SupporterId",

@@ -32,6 +32,15 @@ namespace SocialCyclingWorld.Web.Data
             modelBuilder.Entity<ClubSupporter>()
                 .HasKey(cs => new { cs.ClubId, cs.SupporterId });
 
+            modelBuilder.Entity<Wielrenner>()
+                .Property(w => w.ClubId)
+                .IsRequired();
+
+            modelBuilder.Entity<Fiets>()
+                .Property(f => f.WielrennerId)
+                .IsRequired();
+
+
             DataSeeder.Seed(modelBuilder);
 
             base.OnModelCreating(modelBuilder);

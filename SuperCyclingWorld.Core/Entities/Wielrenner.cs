@@ -7,8 +7,9 @@ namespace SuperCyclingWorld.Core.Entities
 {
     public class Wielrenner : Persoon
     {
-        public Club Club { get; set; }
-        public ICollection<Fiets> Fietsen { get; set; }
+        public Guid ClubId { get; private set; }
+        public Club Club { get; private set; }
+        public ICollection<Fiets> Fietsen { get; private set; }
         public Wielrenner()
         {
 

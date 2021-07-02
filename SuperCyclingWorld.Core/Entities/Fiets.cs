@@ -6,19 +6,22 @@ namespace SuperCyclingWorld.Core.Entities
 {
     public class Fiets
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
         public string Zadel { get; set; }
         public string Merk { get; set; }
+        public Guid WielrennerId { get; private set; }
 
-        public Fiets()
+        private Fiets()
         {
 
         }
 
-        public Fiets(string zadel, string merk)
+        public Fiets(Wielrenner wielrenner, string merk, string zadel)
         {
-            Zadel = zadel;
+            Id = Guid.NewGuid();
+            WielrennerId = wielrenner.Id;
             Merk = merk;
+            Zadel = zadel;
         }
     }
 }

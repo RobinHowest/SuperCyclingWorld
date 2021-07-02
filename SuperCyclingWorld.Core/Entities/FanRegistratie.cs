@@ -8,5 +8,6 @@ namespace SuperCyclingWorld.Core.Entities
     {
         public Guid WielrennerId { get; set; }
         public Guid SupporterId { get; set; }
+
     }
 }

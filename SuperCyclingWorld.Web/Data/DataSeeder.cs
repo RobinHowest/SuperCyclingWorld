@@ -11,26 +11,54 @@ namespace SuperCyclingWorld.Web.Data
     {
         public static void Seed(ModelBuilder modelBuilder)
         {
-
-            var wielrenners = new Wielrenner[]
-            {
-                new Wielrenner {Id = Guid.NewGuid(), Achternaam = "Franckaert", Voornaam = "Robin" }
+            var clubs = new[]
+{
+                new {Id = Guid.NewGuid(), Clubnaam = "WTC"},
+                new {Id = Guid.NewGuid(), Clubnaam = "DCTV"},
+                new {Id = Guid.NewGuid(), Clubnaam = "De lustige rijders"},
+                new {Id = Guid.NewGuid(), Clubnaam = "WTC Melsele"},
+                new {Id = Guid.NewGuid(), Clubnaam = "The master cyclists"}
             };
 
-            var supporters = new Supporter[]
+            var wielrenners = new []
             {
-                new Supporter {Id = Guid.NewGuid(), Achternaam = "Supporter", Voornaam = "1"}
+                new  {Id = Guid.NewGuid(), Achternaam = "Franckaert", Voornaam = "Robin", ClubId = clubs[0].Id },
+                new  {Id = Guid.NewGuid(), Achternaam = "Jansma", Voornaam = "Johanna", ClubId = clubs[1].Id },
+                new  {Id = Guid.NewGuid(), Achternaam = "Vissers", Voornaam = "Bert", ClubId = clubs[2].Id },
+                new  {Id = Guid.NewGuid(), Achternaam = "Depardieu", Voornaam = "Gerard", ClubId = clubs[3].Id },
+                new  {Id = Guid.NewGuid(), Achternaam = "Van Overmeire", Voornaam = "Marc", ClubId = clubs[4].Id },
             };
 
-            var fietsen = new Fiets[]
+            var supporters = new []
             {
-                new Fiets { Id = Guid.NewGuid(), Merk = "B-Twin", Zadel = "Zwart zadel"}
+                new {Id = Guid.NewGuid(), Achternaam = "The Pooh", Voornaam = "Winnie"},
+                new {Id = Guid.NewGuid(), Achternaam = "Van Achtmaal", Voornaam = "Thomas"},
+                new {Id = Guid.NewGuid(), Achternaam = "VanKerkhove", Voornaam = "Nico"},
+                new {Id = Guid.NewGuid(), Achternaam = "Kronenburg", Voornaam = "Koen"},
+
             };
 
-            var clubs = new Club[]
+            var fietsen = new []
             {
-                new Club {Id = Guid.NewGuid(), Clubnaam = "WTC"}
+                new { Id = Guid.NewGuid(), Merk = "B-Twin", Zadel = "Zwart zadel", WielrennerId = wielrenners[3].Id},
+                new { Id = Guid.NewGuid(), Merk = "Moldava", Zadel = "Geel zadel", WielrennerId = wielrenners[0].Id},
+                new { Id = Guid.NewGuid(), Merk = "Merckx", Zadel = "Oranje zadel", WielrennerId = wielrenners[1].Id}
             };
+
+
+            var ClubSupporters = new []
+            {
+                new { ClubId = clubs[2].Id, SupporterId = supporters[1].Id},
+                new { ClubId = clubs[0].Id, SupporterId = supporters[0].Id}
+            };
+
+            var FanRegistraties = new []
+            {
+                new { WielrennerId = wielrenners[1].Id, SupporterId = supporters[0].Id},
+                new { WielrennerId = wielrenners[3].Id, SupporterId = supporters[3].Id}
+
+            };
+
 
 
 
@@ -46,7 +74,11 @@ namespace SuperCyclingWorld.Web.Data
             modelBuilder.Entity<Club>()
                 .HasData(clubs);
 
+            modelBuilder.Entity<ClubSupporter>()
+                .HasData(ClubSupporters);
 
+            modelBuilder.Entity<FanRegistratie>()
+                .HasData(FanRegistraties);
 
         }
 
