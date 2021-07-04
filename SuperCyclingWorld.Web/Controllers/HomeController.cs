@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using SuperCyclingWorld.Core.Entities;
 using SuperCyclingWorld.Web.Models;
+using SuperCyclingWorld.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,28 +13,20 @@ namespace SuperCyclingWorld.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        [Route("/")]
         public IActionResult Index()
         {
-            return View();
-        }
+            ChartBoxListViewModel listChartBoxVM = new ChartBoxListViewModel();
+            ChartBox signIn = new ChartBox("Sign in", "signIn.jpg");
+            ChartBox clubs = new ChartBox("Clubs", "../path/.jpg");
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
 
-            return View();
-        }
+            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(signIn));
+            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(clubs));
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(listChartBoxVM);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

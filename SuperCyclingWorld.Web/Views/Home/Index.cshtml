@@ -1,1 +1,11 @@
-﻿
+﻿@model ChartBoxListViewModel;
+
+@{
+
+    @foreach(var chartbox in Model.ChartBoxViewModels)
+    {
+        <partial name="ChartBoxPartialView" model="chartbox" />
+    }
+    
+}
+

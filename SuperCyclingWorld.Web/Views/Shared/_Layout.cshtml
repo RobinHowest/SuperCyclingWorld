@@ -8,6 +8,7 @@
     <environment include="Development">
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/ChartBox.css" />
     </environment>
     <environment exclude="Development">
         @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -21,9 +22,17 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div>
-        @RenderBody()
-    </div>
+    
+        <nav>
+
+        </nav>
+        <main>
+
+            @RenderBody()
+        </main>
+        <footer>
+            <small>&copy; Franckaert Robin Development &trade;</small>
+        </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
