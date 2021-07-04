@@ -1,34 +1,57 @@
-﻿.ChartBox{
-    width: 100%;
-    height: 250px;
-    background:darkblue;
+﻿@font-face {
+    font-family: HeadFont;
+    src: url(../Fonts/JosefinSans-Bold.ttf);
 }
-#chartPicture{
-    float:left;
+
+
+.ChartBox {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    height: 300px;
+
+}
+.chartPicture {
+    float: left;
     width: 250px;
     height: 250px;
+    margin-top: 25px;
+    background: #0D21A1;
 }
 
-#chartContent{
-    height: 250px;
-    margin-left:250px;
-    background: white;
+.chartContent {
+    height: 300px;
+    margin-left: 250px;
+
 }
 
-#chartContent h4{
-    text-align: center;
+    .chartContent h4 {
+        font-family: HeadFont;
+        font-size: 46px;
+        color: #EEC643;
+        text-shadow: 3px 4px 3px #000000;
+        padding: 25px;
+    }
+
+.triangle {
+    height: 150px;
+    width: 150px;
+    margin-top: 50px;
+    background: yellow;
+    margin-left: 175px;
+    transform: rotate(45deg);
+    background: #0D21A1;
 }
 
-#triangle {
-    width: 0;
-    height: 0;
-    position: absolute;
-    left: 250px;
-    border-style: solid;
-    border-width: 125px 0 125px 150px;
-    border-color: transparent transparent transparent darkblue;
+.chartText {
+    position:relative;
+    margin-left: 150px;
+    background: #0D21A1;
+    height: 180px;
+    width:80%;
 }
 
-#chartText{
-    margin-left:150px;
+.backgroundContent{
+    width:100%;
+
 }

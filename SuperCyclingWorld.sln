@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperCyclingWorld.Web", "SuperCyclingWorld.Web\SuperCyclingWorld.Web.csproj", "{F97152E1-0452-4446-B9D5-F28ACA45C277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCyclingWorld.Web", "SuperCyclingWorld.Web\SuperCyclingWorld.Web.csproj", "{F97152E1-0452-4446-B9D5-F28ACA45C277}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperCyclingWorld.Core", "SuperCyclingWorld.Core\SuperCyclingWorld.Core.csproj", "{1DD3D4CB-18C0-4051-8853-1907CE3426D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperCyclingWorld.Core", "SuperCyclingWorld.Core\SuperCyclingWorld.Core.csproj", "{1DD3D4CB-18C0-4051-8853-1907CE3426D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

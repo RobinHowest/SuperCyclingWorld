@@ -13,13 +13,19 @@ namespace SuperCyclingWorld.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public IHostingEnvironment _enviroment { get; set; }
+
+        public HomeController(IHostingEnvironment environment)
+        {
+            _enviroment = environment;
+        }
 
         [Route("/")]
         public IActionResult Index()
         {
             ChartBoxListViewModel listChartBoxVM = new ChartBoxListViewModel();
-            ChartBox signIn = new ChartBox("Sign in", "signIn.jpg");
-            ChartBox clubs = new ChartBox("Clubs", "../path/.jpg");
+            ChartBox signIn = new ChartBox("Sign in", "/images/sign.jpg");
+            ChartBox clubs = new ChartBox("Clubs", "");
 
 
             listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(signIn));

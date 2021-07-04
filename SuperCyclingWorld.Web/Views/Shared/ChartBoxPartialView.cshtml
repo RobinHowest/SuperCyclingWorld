@@ -1,15 +1,18 @@
 ﻿@model ChartBoxViewModel
 
 <div class="ChartBox">
-    <div id="chartPicture">
-        <div id="triangle"></div>
+    <div class="chartPicture">
+        <div class="triangle"></div>
        
     </div>
-    <section id="chartContent">
-        <img src="@Model.ChartPicture" />
-        <h4>@Model.ChartName</h4>
-        <div id="chartText">
-            content
-        </div>
-    </section>
+    <div class="chartContent">
+
+        
+        <section>
+            <h4>@Model.ChartName</h4>
+            <div class="chartText">
+                content
+            </div>
+        </section>
+    </div>
 </div>
