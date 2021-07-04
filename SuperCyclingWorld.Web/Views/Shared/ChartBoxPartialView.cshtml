@@ -3,7 +3,9 @@
 <div class="ChartBox">
     <div class="chartPicture">
         <div class="triangle"></div>
-       
+        <div class="chartPictogram">
+            <img src="~/images/functionalImages/@Model.ChartPicture" width="150", height="150" />
+        </div>
     </div>
     <div class="chartContent">
 
@@ -11,7 +13,8 @@
         <section>
             <h4>@Model.ChartName</h4>
             <div class="chartText">
-                content
+                @Model.ChartContentText
+                <div class="meerWeten">Meer weten ?</div>
             </div>
         </section>
     </div>

@@ -17,8 +17,10 @@ body {
     background-size: cover;
 }
 nav {
-    height: 100px;
+    height: 80px;
     width: 100%;
-    background: linear-gradient(180deg, #011368 0%, #011368 0%, #141414 100%, #EEC643 100%);
+    background:black;
+    margin-bottom: 25px;
+    /*background: linear-gradient(180deg, #011368 0%, #011368 0%, #141414 100%, #EEC643 100%);*/
 }
 

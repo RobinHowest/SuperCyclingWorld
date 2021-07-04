@@ -36,22 +36,55 @@
 .triangle {
     height: 150px;
     width: 150px;
-    margin-top: 50px;
+    margin-top: 55px;
     background: yellow;
     margin-left: 175px;
     transform: rotate(45deg);
     background: #0D21A1;
 }
 
+.meerWeten{
+    position:absolute;
+    right:0;
+    bottom:0;
+    padding: 20px;
+    cursor: pointer;
+    font-size:20px;
+    border-top-left-radius: 25px;
+}
+
+    .meerWeten:hover {
+        background: #EEC643;
+        color:black;
+        border-top: black 1px solid;
+        border-left: black 1px solid;
+    }
+
+
+
 .chartText {
-    position:relative;
+    position: relative;
     margin-left: 150px;
     background: #0D21A1;
-    height: 180px;
-    width:80%;
+    width: 80%;
+    text-align: center;
+    padding: 75px;
+    font-family: HeadFont;
+    font-size: 28px;
+    color: white;
+    overflow:hidden;
 }
 
 .backgroundContent{
     width:100%;
 
+}
+
+.chartPictogram{
+    background-image: url(../images/functionalImages/signIn.png);
+    height:100px;
+    width:100px;
+    position:relative;
+    top:-150px;
+    left:50px;
 }
