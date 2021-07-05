@@ -18,7 +18,10 @@
     height: 250px;
     margin-top: 25px;
     background: #0D21A1;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 }
+
 
 .chartContent {
     height: 300px;
@@ -75,7 +78,8 @@
     font-size: 28px;
     color: white;
     overflow: hidden;
-    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    border: dashed 2px #EEC643;
 }
 
 .backgroundContent{
@@ -83,13 +87,14 @@
 
 }
 
-.chartPictogram{
+.chartPictogram {
     background-image: url(../images/functionalImages/signIn.png);
-    height:100px;
-    width:100px;
-    position:relative;
-    top:-150px;
-    left:50px;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: -150px;
+    left: 50px;
+
 }
 .meerWetenText{
     position: absolute;

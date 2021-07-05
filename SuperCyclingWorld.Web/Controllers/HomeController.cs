@@ -29,10 +29,8 @@ namespace SuperCyclingWorld.Web.Controllers
             ChartBox signIn = new ChartBox("Sign Up", "signIn2.png", "Sign up ! En volg je eigen parcours...", MeerWetenService.GetMeerWetenOverSignIn());
             ChartBox clubs = new ChartBox("Clubs", "clubPicto.png", "Ontdek al onze aangesloten clubs !", MeerWetenService.GetMeerWetenOverClubs());
 
-
             listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(signIn));
             listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(clubs));
-
 
             return View(listChartBoxVM);
         }

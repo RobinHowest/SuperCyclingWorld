@@ -17,6 +17,8 @@ $(document).ready(function () {
 
     menuKnoppen = document.querySelectorAll(".menuKnop")
     chartTexten = document.querySelectorAll(".chartText")
+    chartPictures = document.querySelectorAll(".chartPicture")
+
     meerWeetKnoppen = document.querySelectorAll(".meerWeten")
 
     for (let menuKnop of menuKnoppen) {
@@ -31,6 +33,11 @@ $(document).ready(function () {
     for (let meerWeten of meerWeetKnoppen) {
         meerWeten.innerHTML = "Meer weten ?"
         meerWeten.addEventListener("click", EnlargeChartTextDiv)
+    }
+
+    for (let charPicture of chartPictures) {
+        charPicture.addEventListener("mouseover", DeleteShadow)
+        charPicture.addEventListener("mouseout", ShowShadow)
     }
 
     function TogglePicto(e) {
@@ -76,9 +83,14 @@ $(document).ready(function () {
 
             
         }
+    }
 
+    function DeleteShadow(e) {
+        $(e.currentTarget).css("box-shadow", "none");
+    }
 
-        console.log(e.currentTarget)
+    function ShowShadow(e) {
+        $(e.currentTarget).css("box-shadow", "5px 5px 10px rgba(0, 0, 0, 0.8)");
     }
 
 });
