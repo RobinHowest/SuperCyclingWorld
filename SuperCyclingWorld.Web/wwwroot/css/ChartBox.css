@@ -9,6 +9,7 @@
     width: 80%;
     margin: 0 auto;
     height: 300px;
+    cursor:pointer;
 
 }
 .chartPicture {
@@ -31,12 +32,15 @@
         color: #EEC643;
         text-shadow: 3px 4px 3px #000000;
         padding: 25px;
+        border-bottom: 5px #EEC643 solid;
+        width:90%;
+ 
     }
 
 .triangle {
     height: 150px;
     width: 150px;
-    margin-top: 55px;
+    margin-top: 50px;
     background: yellow;
     margin-left: 175px;
     transform: rotate(45deg);
@@ -54,10 +58,9 @@
 }
 
     .meerWeten:hover {
-        background: #EEC643;
-        color:black;
+        background: green;
+        box-shadow: 3px 3px 15px 5px white;
         border-top: black 1px solid;
-        border-left: black 1px solid;
     }
 
 

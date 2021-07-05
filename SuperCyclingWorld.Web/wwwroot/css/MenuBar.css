@@ -1,0 +1,31 @@
+﻿
+
+@font-face {
+    font-family: HeadFont;
+    src: url(../Fonts/JosefinSans-Bold.ttf);
+}
+
+#menu{
+   float:left;
+   height: 50px;
+}
+
+    #menu li {
+        padding:15px;
+        list-style: none;
+        float:left;
+    }
+
+        #menu li a {
+            text-decoration: none;
+            font-family: HeadFont;
+            font-size: 25px;
+            margin-left: 25px;
+            padding: 15px;
+            background: yellow;
+        }
+
+.menuListItem{
+    position: relative;
+    top:0;
+}  

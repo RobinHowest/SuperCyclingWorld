@@ -9,6 +9,9 @@
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/ChartBox.css" />
+        <link rel="stylesheet" href="~/css/MenuBar.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
     </environment>
     <environment exclude="Development">
         @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -24,7 +27,15 @@
 
     
         <nav>
-
+            <div id="scwLogo"><img src="~/images/functionalImages/SWC_logo.png"  height="80"/></div>
+            <ul id="menu">
+                <li class="menuListItem">
+                    <a id="overOns" class="menuKnop" href="">Over ons</a>
+                </li>
+                <li class="menuListItem">
+                    <a id="overOns2" class="menuKnop"  href="">Over ons 2</a>
+                </li>
+            </ul>
         </nav>
         <main>
             @RenderBody()
@@ -33,11 +44,13 @@
             <small>&copy; Franckaert Robin Development &trade;</small>
         </footer>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -52,6 +65,7 @@
                 integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
         </script>*@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+
     </environment>
 
     @RenderSection("Scripts", required: false)
