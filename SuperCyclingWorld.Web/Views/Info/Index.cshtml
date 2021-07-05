@@ -1,6 +1,166 @@
 ﻿@{
-    <div id="AccountScreen">
-        <div id="aside">hoi</div>
-        <div id="accountContent">hoi2</div>
-    </div>
+    @if (ViewData.ContainsKey("navId"))
+    {
+        if ((string)ViewData["navId"] == "Over Ons")
+        {
+            <script>
+                document.body.style.backgroundImage = "url(../images/OverOnsAchtergrond.jpg)";
+                document.body.style.backgroundRepeat = "no-repeat";
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundPosition = "top left";
+            </script>
+        }
+        else
+        {
+            <script>
+                document.body.style.backgroundImage = "url(../images/LogInAchtergrond.jpg)";
+                document.body.style.backgroundRepeat = "no-repeat";
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundPosition = "top left";
+            </script>
+        }
+
+    }
+<div id="AccountScreen">
+
+    @if ((string)ViewData["navId"] == "Over Ons")
+    {
+        <div id="aside">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="padding-left:20px;padding-right:20px;font-family:StatisticsFont;height:100px;">
+                        InfoPage <img style="float:right;" height="40" width="40" src="~/images/functionalImages/infoPicto.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="accountContent">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="        vertical-align: top;
+        padding: 10px;
+        width: 200px;
+        text-decoration: underline;
+        border-right: solid black 1px;
+        font-family: StatisticsFont;
+        background: #0D21A1;
+        color:white;
+
+">
+                        Over ons
+                    </td>
+                    <td style="vertical-align:top;padding:10px;font-family:StatisticsFont;font-size:20px;">
+                        <p>
+                            Beste bezoeker,
+                        </p><br /><br /><br />
+                        <p style="margin-left:100px;">
+                            Bent u een grote wielerfanaat? <br /><br />
+                            Gaat u regelmatig fietsen, alleen of in clubverband ?<br /><br />
+
+                            Dan zijn wij jouw ideale partner !
+                        </p>
+                        <p style="vertical-align:top;padding:10px;margin-top:60px;line-height:30px;">
+                            Maak uw <b>gratis account</b> aan en kom in contact met nieuwe ongekende routes van veschillende wielerfanaten uit Vlaanderen,<br />
+
+                            Hier kan je je gewicht bijhouden, gereden kilometers, wattage, vetverbranding, calorien, noem maar op ! <br /> Neem je smart phone mee op je fietstocht en Super Cycling World doet de rest.
+                            <br />Deel uw strafste prestaties op de Mont-Ventoux of creeër een custom rit waarvan jij de recordhouder bent in een bepaalde categorie.<br />
+                            <br /><br />
+                            Ontdek talloze wieler toeristen clubs, ook bij jou in de buurt ! Zie stiekem wie de beste zijn of de kilometervreters. <br /> Win badges met je club om aan te tonen dat jullie de beste zijn in een categorie.
+                            <br /> Daag je vrienden uit om je records te verbeteren.
+                        </p>
+                        <h3 style="margin-top:40px;">Hoe werkt het?</h3>
+                        <p style="vertical-align:top;padding:10px;margin-top:20px;line-height:30px;">
+                            Je kan je registreren als <b>supporter</b> of als <b>wielrenner</b>. <br />
+                            Uiteraard zit het in Super Cycling World boordevol leuke clubs. Voor deze clubs kan jij supporter of zelf aansluiten. <br />
+
+                        </p>
+                        <h5>Wielrenner</h5>
+                        <p style="vertical-align:top;padding:10px;">Een wielrenner kan lid zijn van een club en individuele supporters hebben.<br /> Kan fan zijn van andere wielrenners maar niet van andere clubs.</p>
+                        <h5>Supporter</h5>
+                        <p style="vertical-align:top;padding:10px;">Een supporter is GEEN lid van een club maar kan supporteren voor veel wielrenners en clubs</p>
+
+                        <p style="vertical-align:top;padding:10px;margin-top:40px;">
+                            Aan jouw de keuze, word jij een passieve of een actieve WorldCyclist ? <br /><br />
+                            <small>TIP: Je kan na het registreren nog altijd switchen tussen supporter of wielrenner !</small>
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    }
+    else
+    {
+        <div id="aside">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="padding-left:20px;padding-right:20px;font-family:StatisticsFont;height:100px;">
+                        Inloggen <img style="float:right;" height="40" width="40" src="~/images/functionalImages/signIn1.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="accountContent">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="        vertical-align: top;
+        padding: 10px;
+        width: 200px;
+        text-decoration: underline;
+        border-right: solid black 1px;
+        font-family: StatisticsFont;
+        background: #0D21A1;
+        color:white;
+
+">
+        
+                        
+                        Log in
+                    </td>
+                    <td style="position:relative;text-align:center;padding:10px;font-family:StatisticsFont;font-size:20px;">
+                        <div style="        height: 300px;
+        width: 500px;
+        left: 20%;
+        top: 20%;
+        position: absolute;
+        background: #EEF0F2;
+        box-shadow: 0px 0px 15px -1px #000000;
+        border-radius:20px;
+">
+                            <table style="width:100%;height:100%;">
+                                <tr>
+                                    <td colspan="2">
+                                        Inloggen
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Gebruikersnaam/email:
+                                    </td>
+                                    <td>
+                                        <input type="text" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Paswoord:
+                                    </td>
+                                    <td>
+                                        <input type="text" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="color:#EEC643;">
+                                        Nog geen lid? Druk op de sign up knop op de home page.
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    }
+</div>
 }

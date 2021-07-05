@@ -1,4 +1,7 @@
 ﻿var menuKnoppen;
+var bodyImage;
+
+
 
 $(document).ready(function () {
     jQuery.fn.shake = function (interval, distance, times) {
@@ -18,8 +21,10 @@ $(document).ready(function () {
     menuKnoppen = document.querySelectorAll(".menuKnop")
     chartTexten = document.querySelectorAll(".chartText")
     chartPictures = document.querySelectorAll(".chartPicture")
-
+    menuListItems = document.querySelectorAll(".menuListItem");
     meerWeetKnoppen = document.querySelectorAll(".meerWeten")
+    
+
 
     for (let menuKnop of menuKnoppen) {
         menuKnop.addEventListener("mouseover", Enlarge);
@@ -38,6 +43,10 @@ $(document).ready(function () {
     for (let charPicture of chartPictures) {
         charPicture.addEventListener("mouseover", DeleteShadow)
         charPicture.addEventListener("mouseout", ShowShadow)
+    }
+
+    for (let menuListItem of menuListItems) {
+        menuListItem.addEventListener("click", ChangeBackgroundBody);
     }
 
     function TogglePicto(e) {
@@ -93,4 +102,9 @@ $(document).ready(function () {
         $(e.currentTarget).css("box-shadow", "5px 5px 10px rgba(0, 0, 0, 0.8)");
     }
 
+    function ChangeBackgroundBody() {
+        let body = document.body;
+        body.className = "info";
+       // document.body.style.backgroundImage = "url(../images/sign.jpg)";
+    }
 });

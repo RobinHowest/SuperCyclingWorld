@@ -3,17 +3,17 @@
     font-family: HeadFont;
     src: url(../Fonts/JosefinSans-Bold.ttf);
 }
-
+@font-face {
+    font-family: StatisticsFont;
+    src: url(../Fonts/JosefinSans-Regular.ttf);
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body {
+#SCWBody {
     background: url("../images/SCW_background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     overflow-y: scroll;
 }

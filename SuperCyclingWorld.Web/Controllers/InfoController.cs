@@ -8,10 +8,12 @@ namespace SuperCyclingWorld.Web.Controllers
 {
     public class InfoController : Controller
     {
-        [Route("/Info")]
-        public IActionResult Index()
-        { 
+        [Route("/Info/{navId}")]
+        public IActionResult Index(string navId)
+        {
+            ViewData["navId"] = navId;
             return View();
         }
+        
     }
 }

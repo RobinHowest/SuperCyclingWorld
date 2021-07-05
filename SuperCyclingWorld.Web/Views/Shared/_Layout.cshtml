@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body>
+<body id="SCWBody">
 
 
     <partial name="_CookieConsentPartial" />
@@ -31,10 +31,13 @@
             <div id="scwLogo"><img src="~/images/functionalImages/SWC_logo.png"  height="80"/></div>
             <ul id="menu">
                 <li class="menuListItem">
-                    <a asp-controller="Info" asp-action="index" id="overOns" class="menuKnop">Over ons</a>
+                    <a asp-controller="Info" asp-action="index" asp-route-navId="Over Ons" id="overOns" class="menuKnop">Over ons</a>
                 </li>
                 <li class="menuListItem">
-                    <a id="logIn" class="menuKnop"  href="">Log in</a>
+                    <a asp-controller="Info" asp-action="index" asp-route-navId="Log In" id="logIn" class="menuKnop">Log in</a>
+                </li>
+                <li class="menuListItem">
+                    <a asp-controller="home" asp-action="index" id="home" class="menuKnop">Home</a>
                 </li>
             </ul>
         </nav>
