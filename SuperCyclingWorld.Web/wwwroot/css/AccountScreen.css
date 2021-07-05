@@ -1,0 +1,21 @@
+﻿#AccountScreen{
+    display:flex;
+    height:1000px;
+    width:100%;
+    padding-top:50px;
+}
+
+#AccountScreen div{
+    float: left;
+}
+
+#aside{
+    width:250px;
+    background: blue;
+    height:100%;
+}
+
+#accountContent {
+    height: 100%;
+    flex-grow: 1;
+}

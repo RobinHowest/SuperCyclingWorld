@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/ChartBox.css" />
         <link rel="stylesheet" href="~/css/MenuBar.css" />
+        <link rel="stylesheet" href="~/css/AccountScreen.css" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
     </environment>
@@ -30,10 +31,10 @@
             <div id="scwLogo"><img src="~/images/functionalImages/SWC_logo.png"  height="80"/></div>
             <ul id="menu">
                 <li class="menuListItem">
-                    <a id="overOns" class="menuKnop" href="">Over ons</a>
+                    <a asp-controller="Info" asp-action="index" id="overOns" class="menuKnop">Over ons</a>
                 </li>
                 <li class="menuListItem">
-                    <a id="overOns2" class="menuKnop"  href="">Over ons 2</a>
+                    <a id="logIn" class="menuKnop"  href="">Log in</a>
                 </li>
             </ul>
         </nav>

@@ -15,17 +15,19 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    overflow-y: scroll;
 }
 nav {
-    height: 50px;
+    height: 55px;
     width: 100%;
-    background:white;
-    margin-bottom: 150px;
+    background:#EEF0F2;
     /*background: linear-gradient(180deg, #011368 0%, #011368 0%, #141414 100%, #EEC643 100%);*/
 }
 
+
+
 #scwLogo {
-    background: black;
+    background: #EEF0F2;
     width: 500px;
-    float:left;
+    float: left;
 }

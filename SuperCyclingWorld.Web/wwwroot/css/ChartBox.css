@@ -2,15 +2,15 @@
     font-family: HeadFont;
     src: url(../Fonts/JosefinSans-Bold.ttf);
 }
-
+#chartBoxes{
+    margin-top:150px;
+}
 
 .ChartBox {
     position: relative;
     width: 80%;
     margin: 0 auto;
     height: 300px;
-    cursor:pointer;
-
 }
 .chartPicture {
     float: left;
@@ -32,7 +32,6 @@
         color: #EEC643;
         text-shadow: 3px 4px 3px #000000;
         padding: 25px;
-        border-bottom: 5px #EEC643 solid;
         width:90%;
  
     }
@@ -75,7 +74,8 @@
     font-family: HeadFont;
     font-size: 28px;
     color: white;
-    overflow:hidden;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .backgroundContent{
@@ -91,3 +91,11 @@
     top:-150px;
     left:50px;
 }
+.meerWetenText{
+    position: absolute;
+    text-align:left;
+    width:60%;
+    margin-top:100px;
+    
+}
+

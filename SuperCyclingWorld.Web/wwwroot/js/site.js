@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     menuKnoppen = document.querySelectorAll(".menuKnop")
     chartTexten = document.querySelectorAll(".chartText")
-
+    meerWeetKnoppen = document.querySelectorAll(".meerWeten")
 
     for (let menuKnop of menuKnoppen) {
         menuKnop.addEventListener("mouseover", Enlarge);
@@ -28,11 +28,17 @@ $(document).ready(function () {
         charText.addEventListener("mouseover", TogglePicto)
     }
 
+    for (let meerWeten of meerWeetKnoppen) {
+        meerWeten.innerHTML = "Meer weten ?"
+        meerWeten.addEventListener("click", EnlargeChartTextDiv)
+    }
+
     function TogglePicto(e) {
 
         $(e.currentTarget.parentNode.parentNode.parentNode).children().first().addClass('shakeIt');
         $('.shakeIt').shake(160, 5, 2);
         $(e.currentTarget.parentNode.parentNode.parentNode).children().first().removeClass('shakeIt');
+        $(e.currentTarget.parentNode.parentNode).removeEventListener("mouseover", TogglePicto);
     }
 
 
@@ -42,9 +48,37 @@ $(document).ready(function () {
 
     function Delarge(e) {
 
-        $(event.currentTarget).animate({paddingBottom: 15 }, 200)
+        $(e.currentTarget).animate({paddingBottom: 15 }, 200)
     }
 
+    function EnlargeChartTextDiv(e) {
 
+        let meerWetenKnop = e.currentTarget;
+
+        if (!$(meerWetenKnop).hasClass("clicked")) {
+            $(e.currentTarget.parentNode.parentNode.parentNode.parentNode).animate({ height: 800 }, 1000)
+            $(e.currentTarget.parentNode.parentNode.parentNode).animate({ height: 800 }, 1000)
+            $(e.currentTarget.parentNode.parentNode).animate({ height: 800 }, 1000)
+            $(e.currentTarget.parentNode).animate({ height: 600 }, 1000, function () {
+                meerWetenKnop.innerHTML = "Terug";
+                $(meerWetenKnop).addClass("clicked")
+            })
+
+        }
+        else {
+            $(e.currentTarget.parentNode.parentNode.parentNode.parentNode).animate({ height: 300 }, 1000)
+            $(e.currentTarget.parentNode.parentNode.parentNode).animate({ height: 300 }, 1000)
+            $(e.currentTarget.parentNode.parentNode).animate({ height: 300 }, 1000)
+            $(e.currentTarget.parentNode).animate({ height: 180 }, 1000, function () {
+                meerWetenKnop.innerHTML = "Meer weten ?"
+                $(meerWetenKnop).removeClass("clicked")
+            })
+
+            
+        }
+
+
+        console.log(e.currentTarget)
+    }
 
 });

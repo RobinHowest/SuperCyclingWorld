@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SuperCyclingWorld.Core.Entities;
+using SuperCyclingWorld.Core.Services;
 using SuperCyclingWorld.Web.Models;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
@@ -14,18 +15,19 @@ namespace SuperCyclingWorld.Web.Controllers
     public class HomeController : Controller
     {
         public IHostingEnvironment _enviroment { get; set; }
-
+        
         public HomeController(IHostingEnvironment environment)
         {
             _enviroment = environment;
+           
         }
 
         [Route("/")]
         public IActionResult Index()
         {
             ChartBoxListViewModel listChartBoxVM = new ChartBoxListViewModel();
-            ChartBox signIn = new ChartBox("Sign Up", "signIn2.png", "Sign up ! En volg je eigen parcours...");
-            ChartBox clubs = new ChartBox("Clubs", "clubPicto.png", "Ontdek al onze aangesloten clubs !");
+            ChartBox signIn = new ChartBox("Sign Up", "signIn2.png", "Sign up ! En volg je eigen parcours...", MeerWetenService.GetMeerWetenOverSignIn());
+            ChartBox clubs = new ChartBox("Clubs", "clubPicto.png", "Ontdek al onze aangesloten clubs !", MeerWetenService.GetMeerWetenOverClubs());
 
 
             listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(signIn));
