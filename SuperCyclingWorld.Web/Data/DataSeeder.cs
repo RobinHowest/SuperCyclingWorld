@@ -22,19 +22,19 @@ namespace SuperCyclingWorld.Web.Data
 
             var wielrenners = new []
             {
-                new  {Id = Guid.NewGuid(), Achternaam = "Franckaert", Voornaam = "Robin", ClubId = clubs[0].Id },
-                new  {Id = Guid.NewGuid(), Achternaam = "Jansma", Voornaam = "Johanna", ClubId = clubs[1].Id },
-                new  {Id = Guid.NewGuid(), Achternaam = "Vissers", Voornaam = "Bert", ClubId = clubs[2].Id },
-                new  {Id = Guid.NewGuid(), Achternaam = "Depardieu", Voornaam = "Gerard", ClubId = clubs[3].Id },
-                new  {Id = Guid.NewGuid(), Achternaam = "Van Overmeire", Voornaam = "Marc", ClubId = clubs[4].Id },
+                new  {Id = Guid.NewGuid(), Achternaam = "Franckaert", Voornaam = "Robin", ClubId = clubs[0].Id, GeboorteDatum = DateTime.Parse("Jan 1, 1981") },
+                new  {Id = Guid.NewGuid(), Achternaam = "Jansma", Voornaam = "Johanna", ClubId = clubs[1].Id, GeboorteDatum = DateTime.Parse("Jan 1, 1985") },
+                new  {Id = Guid.NewGuid(), Achternaam = "Vissers", Voornaam = "Bert", ClubId = clubs[2].Id, GeboorteDatum = DateTime.Parse("Jan 1, 2001") },
+                new  {Id = Guid.NewGuid(), Achternaam = "Depardieu", Voornaam = "Gerard", ClubId = clubs[3].Id, GeboorteDatum = DateTime.Parse("Jan 1, 1999") },
+                new  {Id = Guid.NewGuid(), Achternaam = "Van Overmeire", Voornaam = "Marc", ClubId = clubs[4].Id, GeboorteDatum = DateTime.Parse("Jan 1, 1979") },
             };
 
             var supporters = new []
             {
-                new {Id = Guid.NewGuid(), Achternaam = "The Pooh", Voornaam = "Winnie"},
-                new {Id = Guid.NewGuid(), Achternaam = "Van Achtmaal", Voornaam = "Thomas"},
-                new {Id = Guid.NewGuid(), Achternaam = "VanKerkhove", Voornaam = "Nico"},
-                new {Id = Guid.NewGuid(), Achternaam = "Kronenburg", Voornaam = "Koen"},
+                new {Id = Guid.NewGuid(), Achternaam = "The Pooh", Voornaam = "Winnie", GeboorteDatum = DateTime.Parse("Jan 1, 2009")},
+                new {Id = Guid.NewGuid(), Achternaam = "Van Achtmaal", Voornaam = "Thomas", GeboorteDatum = DateTime.Parse("Jan 1, 2000")},
+                new {Id = Guid.NewGuid(), Achternaam = "VanKerkhove", Voornaam = "Nico", GeboorteDatum = DateTime.Parse("Jan 1, 1999")},
+                new {Id = Guid.NewGuid(), Achternaam = "Kronenburg", Voornaam = "Koen", GeboorteDatum = DateTime.Parse("Jan 1, 1981")},
 
             };
 
