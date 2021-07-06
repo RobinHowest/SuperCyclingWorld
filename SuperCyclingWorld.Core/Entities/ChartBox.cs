@@ -7,7 +7,6 @@ namespace SuperCyclingWorld.Core.Entities
 {
     public class ChartBox
     {
-
         public string Name { get; set; }
         public string Picture { get; set; }
 

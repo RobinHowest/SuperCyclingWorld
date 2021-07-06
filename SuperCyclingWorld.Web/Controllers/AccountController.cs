@@ -42,8 +42,8 @@ namespace SuperCyclingWorld.Web.Controllers
             return View();
         }
 
-        // GET: AccountController/Create
-        public ActionResult Create()
+        [Route("/AccountController/NewAccount")]
+        public IActionResult NewAccount()
         {
             return View();
         }
