@@ -57,18 +57,22 @@
                                         {
                                             <td colspan="2" style="height:200px;padding-left:20%;">
                                                 <p style="width:250px;">Ik teken in als Supporter<input asp-for="RegisteredAS" style="float:right;" type="radio" value="Supporter" /></p> <br />
-                                                <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" /></p>
+                                                <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" checked /></p>
+                                                <span asp-validation-for="RegisteredAS"></span>
                                             </td>
                                         }
 
 
                                     </tr>
+                                    @if (!TempData.ContainsKey("NewAccount"))
+                                    {
+                                        <tr>
+                                            <td style="text-align:center;">
+                                                <input type="submit" value="Aanmaken" />
+                                            </td>
+                                        </tr>
+                                    }
 
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            <input type="submit" value="Aanmaken" />
-                                        </td>
-                                    </tr>
                                 </table>
                             </form>
                         </div>

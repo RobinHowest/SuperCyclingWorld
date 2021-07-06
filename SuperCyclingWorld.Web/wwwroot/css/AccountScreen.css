@@ -58,3 +58,7 @@
 .Succes img{
     vertical-align:bottom;
 }
+.clubSelectionItem:hover{
+    background:#EEC643;
+
+}

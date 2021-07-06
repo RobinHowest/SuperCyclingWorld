@@ -39,7 +39,7 @@
                     </td>
                     <td>
                         <div style="height:100%;width:100%;position:relative;font-family:HeadFont;">
-                            <form method="post" asp-controller="Account" asp-action="CreateAccount">
+                            <form method="post" asp-controller="Account" asp-action="NewAccount">
                                 <table style="width:100%;">
                                     <tr>
                                         <td colspan="2" style="text-align:center;font-size:40px;">
@@ -56,8 +56,8 @@
                                         else
                                         {
                                             <td colspan="2" style="height:200px;padding-left:20%;">
-                                                <p style="width:250px;">Ik teken in als Supporter<input asp-for="RegisteredAS" style="float:right;" type="radio" value="Supporter" /></p> <br />
-                                                <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" /></p>
+                                                <input asp-for="RegisteredAS" type="hidden" />
+                                                Mijn gegevens als Supporter.
                                             </td>
                                         }
 
@@ -65,7 +65,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Voornaam:
+                                            Voornaam:<span  style="color:red;float:right;" asp-validation-for="Voornaam"></span>
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Voornaam" />
@@ -78,7 +78,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Achternaam:
+                                            Achternaam:<span style="color:red;float:right;" asp-validation-for="Achternaam"></span>
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Achternaam" />
@@ -91,7 +91,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Geboortedatum:
+                                            Geboortedatum:<span style="color:red;float:right;" asp-validation-for="GeboorteDatum"></span>
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="GeboorteDatum" />
@@ -104,7 +104,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Your Email:
+                                            Your Email:<span style="color:red;float:right;" asp-validation-for="Email"></span>
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Email" />
@@ -117,7 +117,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Paswoord:
+                                            Paswoord:<span style="color:red;float:right;" asp-validation-for="Paswoord"></span>
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Paswoord" />
@@ -130,7 +130,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Repeat Paswoord:
+                                            Repeat Paswoord:<span style="color:red;float:right;" asp-validation-for="RepeatPaswoord"></span>
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="RepeatPaswoord" />
@@ -153,11 +153,16 @@
                                     </tr>
                                 </table>
                             </form>
-                            </div>
+                        </div>
                 </tr>
 
             </table>
         </div>
     </div>
+    @section scripts{
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
     }
+}
 

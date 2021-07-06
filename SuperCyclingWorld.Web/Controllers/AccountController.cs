@@ -52,38 +52,85 @@ namespace SuperCyclingWorld.Web.Controllers
         [Route("/AccountController/NewAccount")]
         public IActionResult NewAccount(NewAccountFormViewModel newAccountFormVm)
         {
-            if(newAccountFormVm.ClubId == null)
+
+
+            if (ModelState.IsValid)
             {
                 if (newAccountFormVm.RegisteredAS == "Supporter")
                 {
+                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                    _dbContext.Supporters.Add(newSupporter);
+                    _dbContext.SaveChanges();
 
-                    return View("newSupporterForm", newAccountFormVm);
-
-                    //Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-                    //_dbContext.Supporters.Add(newSupporter);
-                    //_dbContext.SaveChanges();
+                    TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
+                    return RedirectToAction("NewAccount");
                 }
                 else
                 {
-
-                    return View("newWielrennerForm", newAccountFormVm);
-                    //Wielrenner newWielrenner = new Wielrenner(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-                    //_dbContext.Wielrenners.Add(newWielrenner);
-                    //_dbContext.SaveChanges();
+                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                   
+                    _dbContext.Wielrenners.Add(newWielrenner);
+                   
+                    _dbContext.SaveChanges();
+                    TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
+                    return RedirectToAction("NewAccount");
                 }
+
+            }
+
+
+
+            if (newAccountFormVm.RegisteredAS == "Supporter")
+            {
+                      newAccountFormVm.Clubs = null;
+                      return View("newSupporterForm", newAccountFormVm);
             }
             else
             {
-                if(newAccountFormVm.RegisteredAS == "Supporter")
-                {
-                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-                    _dbContext.Supporters.Add(newSupporter);
-                }
+                      newAccountFormVm.Clubs = _dbContext.Clubs.OrderBy(c => c.Clubnaam).ToList();
+                      return View("newWielrennerForm", newAccountFormVm);
             }
+
+
+
+
+
+
+            //if(newAccountFormVm.ClubId == null)
+            //{
+            //    if (newAccountFormVm.RegisteredAS == "Supporter")
+            //    {
+            //        newAccountFormVm.Clubs = null;
+            //        return View("newSupporterForm", newAccountFormVm);
+
+            //        //Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+            //        //_dbContext.Supporters.Add(newSupporter);
+            //        //_dbContext.SaveChanges();
+            //    }
+            //    else
+            //    {
+            //        newAccountFormVm.Clubs = _dbContext.Clubs.OrderBy(c => c.Clubnaam).ToList();
+            //        return View("newWielrennerForm", newAccountFormVm);
+
+            //    }
+            //}
+            //else
+            //{
+            //    if(newAccountFormVm.RegisteredAS == "Supporter")
+            //    {
+            //        Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+            //        _dbContext.Supporters.Add(newSupporter);
+            //    }
+            //    else
+            //    {
+            //        Wielrenner newWielrenner = new Wielrenner(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+            //        _dbContext.Wielrenners.Add(newWielrenner);
+            //    }
+            //}
 
             //TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
 
-            return RedirectToAction("NewAccount");
+
         }
 
         // POST: AccountController/Create
