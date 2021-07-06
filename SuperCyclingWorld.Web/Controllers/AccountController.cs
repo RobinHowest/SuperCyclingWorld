@@ -52,17 +52,40 @@ namespace SuperCyclingWorld.Web.Controllers
         [Route("/AccountController/NewAccount")]
         public IActionResult NewAccount(NewAccountFormViewModel newAccountFormVm)
         {
-            if(newAccountFormVm.RegisteredAS == "Supporter")
+            if(newAccountFormVm.ClubId == null)
             {
-                Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-                _dbContext.Supporters.Add(newSupporter);
-                _dbContext.SaveChanges();
+                if (newAccountFormVm.RegisteredAS == "Supporter")
+                {
+
+                    return View("newSupporterForm", newAccountFormVm);
+
+                    //Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                    //_dbContext.Supporters.Add(newSupporter);
+                    //_dbContext.SaveChanges();
+                }
+                else
+                {
+
+                    return View("newWielrennerForm", newAccountFormVm);
+                    //Wielrenner newWielrenner = new Wielrenner(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                    //_dbContext.Wielrenners.Add(newWielrenner);
+                    //_dbContext.SaveChanges();
+                }
+            }
+            else
+            {
+                if(newAccountFormVm.RegisteredAS == "Supporter")
+                {
+                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                    _dbContext.Supporters.Add(newSupporter);
+                }
             }
 
-            TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
+            //TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
 
             return RedirectToAction("NewAccount");
         }
+
         // POST: AccountController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -22,19 +22,19 @@
         color:white;
 
 ">
-                        <p style="text-decoration:underline;">Welkom !</p><br/><br/>
+                        <p style="text-decoration:underline;">Welkom !</p><br /><br />
                         <div style="float:none;">
-                            <img src="~/images/functionalImages/infoPictoYellow.png" width="20", height="20"/>
+                            <img src="~/images/functionalImages/infoPictoYellow.png" width="20" , height="20" />
                         </div>
-                        <br/>
+                        <br />
                         <p style="display:block;">
-                            Hier maak je een nieuw acoount aan.<br/>Vul je Email en paswoord in, vergeet je paswoord niet te herhalen.
+                            Hier maak je een nieuw acoount aan.<br />Vul je Email en paswoord in, vergeet je paswoord niet te herhalen.
                         </p>
-                        <br/>
+                        <br />
                         <p>
-                            Je paswoord moet ui 8 karakters bestaan en moet tenminste 1 hoofdletter en 1 cijfer hebben. 
+                            Je paswoord moet ui 8 karakters bestaan en moet tenminste 1 hoofdletter en 1 cijfer hebben.
                         </p>
-                        <br/>
+                        <br />
                         <p style="color:red;">Wanneer je toetreedt tot onze community ga je automatisch akkoord met de algemene huisregels.&nbsp;&nbsp;&nbsp;&nbsp; <a style="color:white;" href="">klik hier</a></p>
                     </td>
                     <td>
@@ -49,100 +49,23 @@
                                     <tr>
                                         @if (TempData.ContainsKey("NewAccount"))
                                         {
-                                        <td colspan="2" style="height:200px;padding-left:20%;">
-                                            <div class="Succes"><p style="height:40px;width:200px;float:left;margin-top:40px;">@TempData["NewAccount"]</p><p style="height:40px;width:40px;float:left;margin-left:15px;"><img style="margin-left:50px;" height="40" width="40" src="~/images/functionalImages/ok.png" /><p></div>
-                                        </td>
+                                            <td colspan="2" style="height:200px;padding-left:20%;">
+                                                <div class="Succes"><p style="height:40px;width:200px;float:left;margin-top:40px;">@TempData["NewAccount"]</p><p style="height:40px;width:40px;float:left;margin-left:15px;"><img style="margin-left:50px;" height="40" width="40" src="~/images/functionalImages/ok.png" /><p></div>
+                                            </td>
                                         }
                                         else
                                         {
-                                    <td colspan="2" style="height:200px;padding-left:20%;">
-                                        <p style="width:250px;">Ik teken in als Supporter<input asp-for="RegisteredAS" style="float:right;" type="radio" value="Supporter" /></p> <br />
-                                        <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" /></p>
-                                    </td>
+                                            <td colspan="2" style="height:200px;padding-left:20%;">
+                                                <p style="width:250px;">Ik teken in als Supporter<input asp-for="RegisteredAS" style="float:right;" type="radio" value="Supporter" /></p> <br />
+                                                <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" /></p>
+                                            </td>
                                         }
 
 
                                     </tr>
+
                                     <tr>
                                         <td style="text-align:center;">
-                                            Voornaam:
-                                        </td>
-                                        <td style="text-align:left;">
-                                            <input asp-for="Voornaam"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height:20px;">
-                                            &nbsp;
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            Achternaam:
-                                        </td>
-                                        <td style="text-align:left;">
-                                            <input asp-for="Achternaam"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height:20px;">
-                                            &nbsp;
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            Geboortedatum:
-                                        </td>
-                                        <td style="text-align:left;">
-                                            <input asp-for="GeboorteDatum" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height:20px;">
-                                            &nbsp;
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            Your Email:
-                                        </td>
-                                        <td style="text-align:left;">
-                                            <input asp-for="Email" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height:20px;">
-                                            &nbsp;
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            Paswoord:
-                                        </td>
-                                        <td style="text-align:left;">
-                                            <input asp-for="Paswoord" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height:20px;">
-                                            &nbsp;
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:center;">
-                                            Repeat Paswoord:
-                                        </td>
-                                        <td style="text-align:left;">
-                                            <input asp-for="RepeatPaswoord" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height:80px;">
-                                            &nbsp;
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align:right;">
                                             <input type="submit" value="Aanmaken" />
                                         </td>
                                     </tr>

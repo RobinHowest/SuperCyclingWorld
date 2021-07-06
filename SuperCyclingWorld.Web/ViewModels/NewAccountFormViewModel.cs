@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperCyclingWorld.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,5 +15,6 @@ namespace SuperCyclingWorld.Web.ViewModels
         public string Paswoord { get; set; }
         public string RepeatPaswoord { get; set; }
         public string RegisteredAS { get; set; }
+        public Guid? ClubId { get; set; } = null;
     }
 }

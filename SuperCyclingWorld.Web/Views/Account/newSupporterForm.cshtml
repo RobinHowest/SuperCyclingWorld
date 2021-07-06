@@ -1,0 +1,163 @@
+﻿@model NewAccountFormViewModel
+@{
+    <div id="AccountScreen">
+        <div id="aside">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="padding-left:20px;padding-right:20px;font-family:StatisticsFont;height:100px;">
+                        <b>Creating...</b> <br /> <br /> New Account <img style="float:right;" height="40" width="40" src="~/images/functionalImages/ok.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="accountContent">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="        vertical-align: top;
+        padding: 10px;
+        width: 200px;
+        border-right: solid black 1px;
+        font-family: StatisticsFont;
+        background: #0D21A1;
+        color:white;
+
+">
+                        <p style="text-decoration:underline;">Welkom !</p><br /><br />
+                        <div style="float:none;">
+                            <img src="~/images/functionalImages/infoPictoYellow.png" width="20" , height="20" />
+                        </div>
+                        <br />
+                        <p style="display:block;">
+                            Hier maak je een nieuw acoount aan.<br />Vul je Email en paswoord in, vergeet je paswoord niet te herhalen.
+                        </p>
+                        <br />
+                        <p>
+                            Je paswoord moet ui 8 karakters bestaan en moet tenminste 1 hoofdletter en 1 cijfer hebben.
+                        </p>
+                        <br />
+                        <p style="color:red;">Wanneer je toetreedt tot onze community ga je automatisch akkoord met de algemene huisregels.&nbsp;&nbsp;&nbsp;&nbsp; <a style="color:white;" href="">klik hier</a></p>
+                    </td>
+                    <td>
+                        <div style="height:100%;width:100%;position:relative;font-family:HeadFont;">
+                            <form method="post" asp-controller="Account" asp-action="CreateAccount">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td colspan="2" style="text-align:center;font-size:40px;">
+                                            Signing Up !...
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        @if (TempData.ContainsKey("NewAccount"))
+                                        {
+                                            <td colspan="2" style="height:200px;padding-left:20%;">
+                                                <div class="Succes"><p style="height:40px;width:200px;float:left;margin-top:40px;">@TempData["NewAccount"]</p><p style="height:40px;width:40px;float:left;margin-left:15px;"><img style="margin-left:50px;" height="40" width="40" src="~/images/functionalImages/ok.png" /><p></div>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td colspan="2" style="height:200px;padding-left:20%;">
+                                                <p style="width:250px;">Ik teken in als Supporter<input asp-for="RegisteredAS" style="float:right;" type="radio" value="Supporter" /></p> <br />
+                                                <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" /></p>
+                                            </td>
+                                        }
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Voornaam:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="Voornaam" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Achternaam:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="Achternaam" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Geboortedatum:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="GeboorteDatum" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Your Email:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="Email" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Paswoord:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="Paswoord" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Repeat Paswoord:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="RepeatPaswoord" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:80px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:80px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right;">
+                                            <input type="submit" value="Opslaan" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                            </div>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    }
+
