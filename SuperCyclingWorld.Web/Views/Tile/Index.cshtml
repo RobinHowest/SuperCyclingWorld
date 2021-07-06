@@ -43,27 +43,45 @@
                                 }
                             </a>
                         }
-
                     </td>
                     <td style="vertical-align:top;padding:10px;font-family:StatisticsFont;font-size:20px;">
-                        <h2 style="border-bottom: dotted 3px black">Profiel</h2>
-                        <br /><br />
-                        <h3>@Model.AccountType</h3><br />
-                        <p style="padding-left:20px;">@Model.Voornaam @Model.Achternaam</p>
-                        <br />
-                        <p style="padding-left:20px;">Leeftijd: @Model.Leeftijd jaar</p>
-                        <br />
-                        @if (Model.Club != null)
+                        @if (Model.SelectedAccountTile == 0)
                         {
-                            <h3>Club</h3>
+                            <h2 style="border-bottom: dotted 3px black">Profiel</h2>
+                            <br /><br />
+                            <h3>@Model.AccountType</h3><br />
+                            <p style="padding-left:20px;">@Model.Voornaam @Model.Achternaam</p>
                             <br />
-                            <p style="padding-left:20px;">@Model.Club.Clubnaam</p>
+                            <p style="padding-left:20px;">Leeftijd: @Model.Leeftijd jaar</p>
+                            <br />
+                            @if (Model.Club != null)
+                            {
+                                <h3>Club</h3>
+                                <br />
+                                <p style="padding-left:20px;">@Model.Club.Clubnaam</p>
+                            }
+                        }
+                        @if (Model.SelectedAccountTile == 1)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Fietsen</h2>
+                        }
+                        @if (Model.SelectedAccountTile == 2)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Statestieken</h2>
+                        }
+                        @if (Model.SelectedAccountTile == 3)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Ritten</h2>
+                        }
+                        @if (Model.SelectedAccountTile == 6)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Mijn Club</h2>
                         }
                     </td>
+
                 </tr>
 
             </table>
         </div>
     </div>
 }
-

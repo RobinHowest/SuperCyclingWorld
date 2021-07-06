@@ -19,8 +19,9 @@ namespace SuperCyclingWorld.Web.ViewModels
         public ICollection<FanRegistratie> Wielrenners { get;  set; }
         public string AccountType { get; private set; }
         public int Leeftijd { get; private set; }
+        public List<Fiets> Fietsen { get; private set; } = new List<Fiets>();
         public List<AccountTile> AccountTiles { get; set; } = new List<AccountTile>();
-
+        public int SelectedAccountTile { get; set; } = 0;
         public AccountViewModel(Persoon account, ICollection<AccountTile>accountTiles)
         {
    
@@ -29,13 +30,13 @@ namespace SuperCyclingWorld.Web.ViewModels
             Achternaam = account.Achternaam;
             Wielrenners = account.Wielrenners;
             Leeftijd = DateTime.Now.Year - account.GeboorteDatum.Year;
-            SetAccountTypeAndClub(account);
+            SetAccount(account);
             GetAccountTiles(accountTiles);
             
 
         }
 
-        private void SetAccountTypeAndClub(Persoon account)
+        private void SetAccount(Persoon account)
         {
 
             if (account is Wielrenner)
@@ -44,13 +45,15 @@ namespace SuperCyclingWorld.Web.ViewModels
                 Wielrenner convertedPersoon = (Wielrenner)account;
                 Club = convertedPersoon.Club;
                 Wielrenners = convertedPersoon.Wielrenners;
-
+                Fietsen = (List<Fiets>)convertedPersoon.Fietsen;
             }
 
             else
             {
                 AccountType = "Supporter";
                 Supporter convertedPersoon = (Supporter)account;
+                Wielrenners = convertedPersoon.Wielrenners;
+                Clubs = (ICollection<Club>)convertedPersoon.Clubs;
                 Wielrenners = convertedPersoon.Wielrenners;
 
             }
@@ -80,7 +83,6 @@ namespace SuperCyclingWorld.Web.ViewModels
             }
            
         }
-
 
     }
 }
