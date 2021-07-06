@@ -5,7 +5,16 @@
             <table class="accountTableContent">
                 <tr>
                     <td style="padding-left:20px;padding-right:20px;font-family:StatisticsFont;height:100px;">
-                        <b>Creating...</b> <br /> <br /> New Account <img style="float:right;" height="40" width="40" src="~/images/functionalImages/ok.png" />
+                        
+                        @if (TempData.ContainsKey("NewAccount"))
+                        {
+                           <p style="margin-top:15px;float:left;"><b>Created !</b></p>
+                        }
+                        else
+                        {
+                               <p  style="margin-top:15px;float:left;"><b>Creating...</b></p>
+                        }
+                             <br /> <br /> New Account <img style="float:right;" height="40" width="40" src="~/images/functionalImages/ok.png" />
                     </td>
                 </tr>
             </table>
@@ -43,7 +52,13 @@
                                 <table style="width:100%;">
                                     <tr>
                                         <td colspan="2" style="text-align:center;font-size:40px;">
-                                            Signing Up !...
+                                            @if (TempData.ContainsKey("NewAccount"))
+                                            {
+                                                <p>Singed up, proficiat !</p>
+                                            }
+                                            else {
+                                                <p>Signing Up !...</p>
+                                            }
                                         </td>
                                     </tr>
                                     <tr>

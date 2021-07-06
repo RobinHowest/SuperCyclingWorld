@@ -14,7 +14,7 @@ namespace SuperCyclingWorld.Core.Entities
 
         }
 
-        public Supporter(string voornaam, string achternaam) : base(voornaam, achternaam)
+        public Supporter(string voornaam, string achternaam, string paswoord) : base(voornaam, achternaam, paswoord)
         {
 
         }

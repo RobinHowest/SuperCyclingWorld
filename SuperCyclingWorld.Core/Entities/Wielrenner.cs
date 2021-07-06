@@ -16,11 +16,11 @@ namespace SuperCyclingWorld.Core.Entities
 
         }
 
-        public Wielrenner(string voornaam, string achternaam) : base (voornaam, achternaam)
+        public Wielrenner(string voornaam, string achternaam, string paswoord) : base (voornaam, achternaam, paswoord)
         {
 
         }
-        public Wielrenner(Guid clubId, string voornaam, string achternaam) : base(voornaam, achternaam)
+        public Wielrenner(Guid clubId, string voornaam, string achternaam, string paswoord) : base(voornaam, achternaam, paswoord)
         {
             ClubId = clubId;
         }

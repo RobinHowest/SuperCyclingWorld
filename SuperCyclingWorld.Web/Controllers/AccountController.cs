@@ -28,7 +28,7 @@ namespace SuperCyclingWorld.Web.Controllers
         [Route("/AccountController")]
         public async Task<IActionResult> Index()
         {
-            //Als het een wielrenner is die binnen komt -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
+            //Als het een wielrenner is die binnen komt (inlogt) -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
             Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("D5EDE78C-E319-44DF-9F37-55ED626CE1A3")).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
 
             AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
@@ -58,7 +58,7 @@ namespace SuperCyclingWorld.Web.Controllers
             {
                 if (newAccountFormVm.RegisteredAS == "Supporter")
                 {
-                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord);
                     _dbContext.Supporters.Add(newSupporter);
                     _dbContext.SaveChanges();
 
@@ -67,7 +67,7 @@ namespace SuperCyclingWorld.Web.Controllers
                 }
                 else
                 {
-                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord);
                    
                     _dbContext.Wielrenners.Add(newWielrenner);
                    
@@ -90,46 +90,6 @@ namespace SuperCyclingWorld.Web.Controllers
                       newAccountFormVm.Clubs = _dbContext.Clubs.OrderBy(c => c.Clubnaam).ToList();
                       return View("newWielrennerForm", newAccountFormVm);
             }
-
-
-
-
-
-
-            //if(newAccountFormVm.ClubId == null)
-            //{
-            //    if (newAccountFormVm.RegisteredAS == "Supporter")
-            //    {
-            //        newAccountFormVm.Clubs = null;
-            //        return View("newSupporterForm", newAccountFormVm);
-
-            //        //Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-            //        //_dbContext.Supporters.Add(newSupporter);
-            //        //_dbContext.SaveChanges();
-            //    }
-            //    else
-            //    {
-            //        newAccountFormVm.Clubs = _dbContext.Clubs.OrderBy(c => c.Clubnaam).ToList();
-            //        return View("newWielrennerForm", newAccountFormVm);
-
-            //    }
-            //}
-            //else
-            //{
-            //    if(newAccountFormVm.RegisteredAS == "Supporter")
-            //    {
-            //        Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-            //        _dbContext.Supporters.Add(newSupporter);
-            //    }
-            //    else
-            //    {
-            //        Wielrenner newWielrenner = new Wielrenner(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
-            //        _dbContext.Wielrenners.Add(newWielrenner);
-            //    }
-            //}
-
-            //TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
-
 
         }
 
