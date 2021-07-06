@@ -22,19 +22,27 @@
         color:white;
 
 ">
-                       <h3>@Model.AccountType</h3> <br/>
-                        <p>Leeftijd: @Model.Leeftijd jaar</p>
-                        <br/>
-                        <br/>
-                        @if (Model.Club != null)
-                        {
-                       <h3>Club</h3>
-                        <br/>
-                        <p>@Model.Club.Clubnaam</p>
-                        }
+                   @foreach(var accountTile in Model.AccountTiles)
+                   {
+                       <div class="accountTile">
+                           <p>@accountTile.Name</p>
+                           <img src="@accountTile.Picture" style="width:60%;height:100px;margin-top:20px;"/>
+                       </div>
+                   }
+
                     </td>
                     <td style="vertical-align:top;padding:10px;font-family:StatisticsFont;font-size:20px;">
-                      
+                        <h3>@Model.AccountType</h3><br/>
+                        <p>@Model.Voornaam @Model.Achternaam</p>
+                         <br />
+                        <p>Leeftijd: @Model.Leeftijd jaar</p>
+                        <br />
+                        @if (Model.Club != null)
+                        {
+                            <h3>Club</h3>
+                            <br />
+                            <p>@Model.Club.Clubnaam</p>
+                        }
                     </td>
                 </tr>
 

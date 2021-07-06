@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialCyclingWorld.Web.Data;
 using SuperCyclingWorld.Core.Entities;
+using SuperCyclingWorld.Core.Enums;
+using SuperCyclingWorld.Core.Services;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,19 +17,21 @@ namespace SuperCyclingWorld.Web.Controllers
     {
 
         private readonly SCWDbContext _dbContext;
+        private readonly AccountTileService _accountTileService;
 
         public AccountController(SCWDbContext dbContext)
         {
             _dbContext = dbContext;
+            _accountTileService = new AccountTileService();
         }
 
         [Route("/AccountController")]
         public async Task<IActionResult> Index()
         {
+            //Als het een wielrenner is die binnen komt -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
+            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("D5EDE78C-E319-44DF-9F37-55ED626CE1A3")).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
 
-            Supporter account1 = await _dbContext.Supporters.Where(w => w.Id == Guid.Parse("2B2E839D-0162-4D34-872A-0061C9E69AA0")).SingleOrDefaultAsync();
-
-            AccountViewModel accountVm = new AccountViewModel(account1);
+            AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
 
             return View(accountVm);
         }

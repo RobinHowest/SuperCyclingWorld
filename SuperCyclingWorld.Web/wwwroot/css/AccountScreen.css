@@ -25,3 +25,21 @@
     height:100%;
 
 }
+.accountTile {
+    width: 80%;
+    height: 200px;
+    margin-left: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 22px;
+    text-decoration: underline;
+
+    box-shadow: inset 0px 0px 5px 2px black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+    .accountTile:hover {
+        box-shadow: 0px 0px 5px 2px white;
+    }

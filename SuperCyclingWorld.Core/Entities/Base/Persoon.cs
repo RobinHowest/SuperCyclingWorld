@@ -10,7 +10,6 @@ namespace SuperCyclingWorld.Core.Entities.Base
         public string Voornaam { get; protected set; }
         public string Achternaam { get; protected set; }
         public DateTime GeboorteDatum { get; protected set; }
-        
 
         public ICollection<FanRegistratie> Wielrenners { get; protected set; }
         public Persoon()
