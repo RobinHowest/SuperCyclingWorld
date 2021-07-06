@@ -29,7 +29,7 @@ namespace SuperCyclingWorld.Web.Controllers
         public async Task<IActionResult> Index()
         {
             //Als het een wielrenner is die binnen komt (inlogt) -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
-            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("D5EDE78C-E319-44DF-9F37-55ED626CE1A3")).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
+            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("FC007E8A-ABB4-4954-8047-32BB8AF9435D")).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
 
             AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
 
@@ -53,12 +53,11 @@ namespace SuperCyclingWorld.Web.Controllers
         public IActionResult NewAccount(NewAccountFormViewModel newAccountFormVm)
         {
 
-
             if (ModelState.IsValid)
             {
                 if (newAccountFormVm.RegisteredAS == "Supporter")
                 {
-                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord);
+                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord, newAccountFormVm.Email);
                     _dbContext.Supporters.Add(newSupporter);
                     _dbContext.SaveChanges();
 
@@ -67,7 +66,7 @@ namespace SuperCyclingWorld.Web.Controllers
                 }
                 else
                 {
-                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord);
+                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord, newAccountFormVm.Email);
                    
                     _dbContext.Wielrenners.Add(newWielrenner);
                    
@@ -77,8 +76,6 @@ namespace SuperCyclingWorld.Web.Controllers
                 }
 
             }
-
-
 
             if (newAccountFormVm.RegisteredAS == "Supporter")
             {
