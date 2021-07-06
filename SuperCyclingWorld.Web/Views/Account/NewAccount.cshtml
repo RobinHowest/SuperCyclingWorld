@@ -1,4 +1,5 @@
-﻿@{
+﻿@model NewAccountFormViewModel
+@{
     <div id="AccountScreen">
         <div id="aside">
             <table class="accountTableContent">
@@ -38,7 +39,7 @@
                     </td>
                     <td>
                         <div style="height:100%;width:100%;position:relative;font-family:HeadFont;">
-                            <form>
+                            <form method="post" asp-controller="Account" asp-action="CreateAccount">
                                 <table style="width:100%;">
                                     <tr>
                                         <td colspan="2" style="text-align:center;font-size:40px;">
@@ -46,8 +47,59 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" style="height:200px;">
-                                            
+                                        @if (TempData.ContainsKey("NewAccount"))
+                                        {
+                                        <td colspan="2" style="height:200px;padding-left:20%;">
+                                            <div class="Succes"><p style="height:40px;width:200px;float:left;margin-top:40px;">@TempData["NewAccount"]</p><p style="height:40px;width:40px;float:left;margin-left:15px;"><img style="margin-left:50px;" height="40" width="40" src="~/images/functionalImages/ok.png" /><p></div>
+                                        </td>
+                                        }
+                                        else
+                                        {
+                                    <td colspan="2" style="height:200px;padding-left:20%;">
+                                        <p style="width:250px;">Ik teken in als Supporter<input asp-for="RegisteredAS" style="float:right;" type="radio" value="Supporter" /></p> <br />
+                                        <p style="width:250px;">Ik teken in als Wielrenner <input asp-for="RegisteredAS" style="float:right;" type="radio" value="Wielrenner" /></p>
+                                    </td>
+                                        }
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Voornaam:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="Voornaam"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Achternaam:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="Achternaam"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            Geboortedatum:
+                                        </td>
+                                        <td style="text-align:left;">
+                                            <input asp-for="GeboorteDatum" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height:20px;">
+                                            &nbsp;
                                         </td>
                                     </tr>
                                     <tr>
@@ -55,7 +107,7 @@
                                             Your Email:
                                         </td>
                                         <td style="text-align:left;">
-                                            <input type="text" />
+                                            <input asp-for="Email" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -68,7 +120,7 @@
                                             Paswoord:
                                         </td>
                                         <td style="text-align:left;">
-                                            <input type="password" />
+                                            <input asp-for="Paswoord" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -81,7 +133,7 @@
                                             Repeat Paswoord:
                                         </td>
                                         <td style="text-align:left;">
-                                            <input type="password" />
+                                            <input asp-for="RepeatPaswoord" />
                                         </td>
                                     </tr>
                                     <tr>

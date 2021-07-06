@@ -48,6 +48,21 @@ namespace SuperCyclingWorld.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("/AccountController/NewAccount")]
+        public IActionResult NewAccount(NewAccountFormViewModel newAccountFormVm)
+        {
+            if(newAccountFormVm.RegisteredAS == "Supporter")
+            {
+                Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam);
+                _dbContext.Supporters.Add(newSupporter);
+                _dbContext.SaveChanges();
+            }
+
+            TempData["NewAccount"] = $"Uw account is gereed, {newAccountFormVm.Voornaam} !";
+
+            return RedirectToAction("NewAccount");
+        }
         // POST: AccountController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
