@@ -26,7 +26,7 @@ namespace SuperCyclingWorld.Web.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             //just to have an account
-            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("D5EDE78C-E319-44DF-9F37-55ED626CE1A3")).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
+            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("D5EDE78C-E319-44DF-9F37-55ED626CE1A3")).Include(w => w.Club).Include(w => w.Wielrenners).Include(f => f.Fietsen).SingleOrDefaultAsync();
             AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
             //-----------------------
 

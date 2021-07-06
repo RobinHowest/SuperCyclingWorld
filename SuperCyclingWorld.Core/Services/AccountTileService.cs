@@ -9,13 +9,11 @@ namespace SuperCyclingWorld.Core.Services
     public class AccountTileService
     {
         public List<AccountTile> AccountTiles { get; private set; } = new List<AccountTile>();
-        public ICollection<string> AccountTilesContent { get; private set; }
-
 
         public AccountTileService()
         {
             AccountTiles = GenerateTiles();
-            AccountTilesContent = GenerateTileContents();
+
         }
 
         private List<AccountTile> GenerateTiles()
@@ -33,15 +31,6 @@ namespace SuperCyclingWorld.Core.Services
             }
 
             return tiles;
-        }
-
-        private List<string> GenerateTileContents()
-        {
-            List<string> tileContents = new List<string>();
-            tileContents.Add("<h2 style='border - bottom: dotted 3px black'>Profiel</h2><br/><br/><h3>@Model.AccountType</h3 >< br/><p style = 'padding-left:20px;'>@Model.Voornaam @Model.Achternaam</p>" +
-                    "<br/><p style = 'padding-left:20px;'> Leeftijd: @Model.Leeftijd jaar</p><br/>@if(Model.Club != null){<h3>Club</h3><br/><p style = 'padding-left:20px;' > @Model.Club.Clubnaam </p>}");
-
-            return tileContents;
         }
 
     }

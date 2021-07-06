@@ -19,7 +19,7 @@ namespace SuperCyclingWorld.Web.ViewModels
         public ICollection<FanRegistratie> Wielrenners { get;  set; }
         public string AccountType { get; private set; }
         public int Leeftijd { get; private set; }
-        public List<Fiets> Fietsen { get; private set; } = new List<Fiets>();
+        public ICollection<Fiets> Fietsen { get; private set; } = new List<Fiets>();
         public List<AccountTile> AccountTiles { get; set; } = new List<AccountTile>();
         public int SelectedAccountTile { get; set; } = 0;
         public AccountViewModel(Persoon account, ICollection<AccountTile>accountTiles)
@@ -45,7 +45,7 @@ namespace SuperCyclingWorld.Web.ViewModels
                 Wielrenner convertedPersoon = (Wielrenner)account;
                 Club = convertedPersoon.Club;
                 Wielrenners = convertedPersoon.Wielrenners;
-                Fietsen = (List<Fiets>)convertedPersoon.Fietsen;
+                Fietsen = convertedPersoon.Fietsen;
             }
 
             else
