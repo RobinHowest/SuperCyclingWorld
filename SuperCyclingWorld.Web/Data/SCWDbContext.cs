@@ -36,9 +36,9 @@ namespace SocialCyclingWorld.Web.Data
                 .Property(w => w.ClubId)
                 .IsRequired();
 
-            modelBuilder.Entity<Fiets>()
-                .Property(f => f.WielrennerId)
-                .IsRequired();
+            //modelBuilder.Entity<Fiets>()
+            //    .Property(f => f.WielrennerId)
+            //    .IsRequired();
 
 
             DataSeeder.Seed(modelBuilder);

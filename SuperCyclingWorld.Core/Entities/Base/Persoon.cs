@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperCyclingWorld.Core.HelpClasses;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,7 +25,7 @@ namespace SuperCyclingWorld.Core.Entities.Base
             Id = Guid.NewGuid();
             Voornaam = voornaam;
             Achternaam = achternaam;
-            Paswoord = paswoord;
+            Paswoord = MD5.CreateMD5(paswoord);
             Email = email;
         }
     }

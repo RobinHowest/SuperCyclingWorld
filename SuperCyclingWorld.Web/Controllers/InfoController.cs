@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,12 @@ namespace SuperCyclingWorld.Web.Controllers
 {
     public class InfoController : Controller
     {
+        [Route("/Info")]
         [Route("/Info/{navId}")]
         public IActionResult Index(string navId)
         {
             ViewData["navId"] = navId;
+
             return View();
         }
         

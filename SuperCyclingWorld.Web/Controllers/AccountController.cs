@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialCyclingWorld.Web.Data;
 using SuperCyclingWorld.Core.Entities;
+using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Core.Enums;
+using SuperCyclingWorld.Core.HelpClasses;
 using SuperCyclingWorld.Core.Services;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
@@ -26,14 +28,45 @@ namespace SuperCyclingWorld.Web.Controllers
         }
 
         [Route("/AccountController")]
-        public async Task<IActionResult> Index()
+        [Route("/AccountController/{PersonLoggedIn?}")]
+        public async Task<IActionResult> Index(Guid personId)
         {
             //Als het een wielrenner is die binnen komt (inlogt) -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
-            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("FC007E8A-ABB4-4954-8047-32BB8AF9435D")).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
-
+            Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == personId).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
+            if(account1 == null)
+            {
+                account1 = await _dbContext.Supporters.Where(w => w.Id == personId).Include(s => s.Wielrenners).Include(s => s.Clubs).SingleOrDefaultAsync();
+            }
             AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
 
             return View(accountVm);
+        }
+
+        [HttpPost]
+        [Route("/AccountController")]
+        public async Task<IActionResult> Index(LogInViewModel logInVm)
+        {
+
+            Persoon tryToLogIn = await _dbContext.Wielrenners.Where(w => w.Email == logInVm.Email_UserName).SingleOrDefaultAsync();
+            if(tryToLogIn == null)
+            {
+                tryToLogIn = await _dbContext.Supporters.Where(s => s.Email == logInVm.Email_UserName).SingleOrDefaultAsync();
+            }
+
+            if(tryToLogIn == null)
+            {
+                return NotFound();
+            }
+
+            Persoon ingelogde = await _dbContext.Wielrenners.Where(w => w.Paswoord == MD5.CreateMD5(logInVm.Paswoord)).SingleOrDefaultAsync();
+            
+            if(ingelogde == null)
+            {
+                TempData["UnsuccesfullInlogAttempt"] = "Verkeerd paswoord, email of gebruikersnaam";
+                return RedirectToAction("index", "info");
+            }
+
+            return RedirectToAction("index", new { PersonId = ingelogde.Id });
         }
 
         // GET: AccountController/Details/5
@@ -52,7 +85,7 @@ namespace SuperCyclingWorld.Web.Controllers
         [Route("/AccountController/NewAccount")]
         public IActionResult NewAccount(NewAccountFormViewModel newAccountFormVm)
         {
-
+            
             if (ModelState.IsValid)
             {
                 if (newAccountFormVm.RegisteredAS == "Supporter")
