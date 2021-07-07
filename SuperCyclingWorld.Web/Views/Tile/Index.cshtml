@@ -64,6 +64,13 @@
                         @if (Model.SelectedAccountTile == 1)
                         {
                             <h2 style="border-bottom: dotted 3px black">Fietsen</h2>
+                            @if(Model.Fietsen.Count == 0)
+                            {
+                                <br/><br/>
+                                <p style="padding-left:20px;">Heeft geen fietsen</p>
+                            }
+
+
                             @foreach (var fiets in Model.Fietsen)
                             {
                                 <br /><br />
@@ -73,6 +80,8 @@
                                 <h3>Kleur Zadel</h3><br />
                                 <p style="padding-left:20px;">@fiets.Zadel</p>
                             }
+
+                            
                         }
                         @if (Model.SelectedAccountTile == 2)
                         {

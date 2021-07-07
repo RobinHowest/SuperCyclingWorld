@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialCyclingWorld.Web.Data;
 using SuperCyclingWorld.Core.Entities;
+using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Core.Services;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
@@ -15,6 +17,7 @@ namespace SuperCyclingWorld.Web.Controllers
     {
         private readonly SCWDbContext _dbContext;
         private readonly AccountTileService _accountTileService;
+        private Persoon Persoon;
 
         public TileController(SCWDbContext dbContext)
         {
@@ -22,26 +25,27 @@ namespace SuperCyclingWorld.Web.Controllers
             _accountTileService = new AccountTileService();
         }
 
-        [Route("/Tile/{id?}")]
-        public async Task<IActionResult> Index(int? id)
+        [Route("/Tile/{id}")]
+        public async Task<IActionResult> Index(int id)
         {
-            //just to have an account
-            Wielrenner account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse("6E0DCE39-CF21-4CC4-9311-11763DB6FA7E")).Include(w => w.Club).Include(w => w.Wielrenners).Include(f => f.Fietsen).SingleOrDefaultAsync();
-            AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
-            //-----------------------
+            string personId = "";
 
-            if (id == null)
+            if (HttpContext.Session.Keys.Contains("LoggedInId"))
+            {
+                personId = HttpContext.Session.GetString("LoggedInId");
+            }
+            else
             {
                 return NotFound();
             }
 
-            accountVm.SelectedAccountTile = (int)id;
-
-
-           
-                
-
-
+            Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse(personId)).Include(w => w.Club).Include(w => w.Wielrenners).Include(f => f.Fietsen).SingleOrDefaultAsync();
+            if(account1 == null)
+            {
+                account1 = await _dbContext.Supporters.Where(w => w.Id == Guid.Parse(personId)).Include(w => w.Wielrenners).Include(w => w.Clubs).SingleOrDefaultAsync();
+            }
+            AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
+            accountVm.SelectedAccountTile = id;
 
             return View(accountVm);
         }

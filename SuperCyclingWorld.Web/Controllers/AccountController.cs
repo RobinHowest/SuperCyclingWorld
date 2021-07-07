@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace SuperCyclingWorld.Web.Controllers
 {
     public class AccountController : Controller
@@ -31,7 +32,7 @@ namespace SuperCyclingWorld.Web.Controllers
         [Route("/AccountController/{PersonId}")]
         public async Task<IActionResult> Index(Guid personId)
         {
-            //Als het een wielrenner is die binnen komt (inlogt) -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
+
             Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == personId).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
             if(account1 == null)
             {
@@ -69,7 +70,7 @@ namespace SuperCyclingWorld.Web.Controllers
                 TempData["UnsuccesfullInlogAttempt"] = "Verkeerd paswoord, email of gebruikersnaam";
                 return RedirectToAction("index", "info");
             }
-
+            HttpContext.Session.SetString("LoggedInId", ingelogde.Id.ToString());
             return RedirectToAction("index", new { personId = ingelogde.Id });
         }
 
