@@ -15,7 +15,7 @@ namespace SuperCyclingWorld.Web.ViewModels
         public string Voornaam { get; set; }
         public string Achternaam { get;  set; }
         public Club Club { get; private set; } = null;
-        public ICollection<Club> Clubs { get; private set; }
+        public ICollection<ClubSupporter> Clubs { get; private set; }
         public ICollection<FanRegistratie> Wielrenners { get;  set; }
         public string AccountType { get; private set; }
         public int Leeftijd { get; private set; }
@@ -53,7 +53,7 @@ namespace SuperCyclingWorld.Web.ViewModels
                 AccountType = "Supporter";
                 Supporter convertedPersoon = (Supporter)account;
                 Wielrenners = convertedPersoon.Wielrenners;
-                Clubs = (ICollection<Club>)convertedPersoon.Clubs;
+                Clubs = convertedPersoon.Clubs;
                 Wielrenners = convertedPersoon.Wielrenners;
 
             }

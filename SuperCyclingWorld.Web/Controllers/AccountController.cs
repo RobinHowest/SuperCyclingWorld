@@ -28,7 +28,7 @@ namespace SuperCyclingWorld.Web.Controllers
         }
 
         [Route("/AccountController")]
-        [Route("/AccountController/{PersonLoggedIn?}")]
+        [Route("/AccountController/{PersonId}")]
         public async Task<IActionResult> Index(Guid personId)
         {
             //Als het een wielrenner is die binnen komt (inlogt) -> if(Persoon is Wielrenner)else{ Supporter account1 = _dbContext.Supporters}  <-- nog te schrijven
@@ -58,15 +58,19 @@ namespace SuperCyclingWorld.Web.Controllers
                 return NotFound();
             }
 
-            Persoon ingelogde = await _dbContext.Wielrenners.Where(w => w.Paswoord == MD5.CreateMD5(logInVm.Paswoord)).SingleOrDefaultAsync();
-            
-            if(ingelogde == null)
+            Persoon ingelogde = await _dbContext.Wielrenners.Where(w => w.Paswoord == MD5.CreateMD5(logInVm.Paswoord) && w.Id == tryToLogIn.Id).SingleOrDefaultAsync();
+            if (ingelogde == null)
+            {
+                ingelogde = await _dbContext.Supporters.Where(w => w.Paswoord == MD5.CreateMD5(logInVm.Paswoord) && w.Id == tryToLogIn.Id).SingleOrDefaultAsync();
+            }
+
+            if (ingelogde == null)
             {
                 TempData["UnsuccesfullInlogAttempt"] = "Verkeerd paswoord, email of gebruikersnaam";
                 return RedirectToAction("index", "info");
             }
 
-            return RedirectToAction("index", new { PersonId = ingelogde.Id });
+            return RedirectToAction("index", new { personId = ingelogde.Id });
         }
 
         // GET: AccountController/Details/5
