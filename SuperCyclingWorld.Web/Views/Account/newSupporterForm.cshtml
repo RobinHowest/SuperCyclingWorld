@@ -40,7 +40,7 @@
                     <td>
                         <div style="height:100%;width:100%;position:relative;font-family:HeadFont;">
                             <form method="post" asp-controller="Account" asp-action="NewAccount">
-                                <table style="width:100%;">
+                                <table style="width:100%;max-width:960px;margin:0 auto;">
                                     <tr>
                                         <td colspan="2" style="text-align:center;font-size:40px;">
                                             Signing Up !...
@@ -65,7 +65,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Voornaam:<span  style="color:red;float:right;" asp-validation-for="Voornaam"></span>
+                                            Voornaam:
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Voornaam" />
@@ -73,12 +73,12 @@
                                     </tr>
                                     <tr>
                                         <td style="height:20px;">
-                                            &nbsp;
+                                            <span style="color:red;float:right;" asp-validation-for="Voornaam"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Achternaam:<span style="color:red;float:right;" asp-validation-for="Achternaam"></span>
+                                            Achternaam:
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Achternaam" />
@@ -86,7 +86,7 @@
                                     </tr>
                                     <tr>
                                         <td style="height:20px;">
-                                            &nbsp;
+                                            <span style="color:red;float:right;" asp-validation-for="Achternaam"></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -99,25 +99,25 @@
                                     </tr>
                                     <tr>
                                         <td style="height:20px;">
-                                            &nbsp;
+                                            <span style="color:red;float:right;" asp-validation-for="GeboorteDatum"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Your Email:<span style="color:red;float:right;" asp-validation-for="Email"></span>
+                                            Your Email:
                                         </td>
                                         <td style="text-align:left;">
-                                            <input asp-for="Email" />
+                                            <input asp-for="Email" style="float:left;"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="height:20px;">
-                                            &nbsp;
+                                            <span style="color:red;float:right;" asp-validation-for="Email"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Paswoord:<span style="color:red;float:right;" asp-validation-for="Paswoord"></span>
+                                            Paswoord:
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="Paswoord" />
@@ -125,24 +125,24 @@
                                     </tr>
                                     <tr>
                                         <td style="height:20px;">
-                                            &nbsp;
+                                            <span style="color:red;float:right;" asp-validation-for="Paswoord"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            Repeat Paswoord:<span style="color:red;float:right;" asp-validation-for="RepeatPaswoord"></span>
+                                            Repeat Paswoord:
                                         </td>
                                         <td style="text-align:left;">
                                             <input asp-for="RepeatPaswoord" />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="height:80px;">
-                                            &nbsp;
+                                        <td style="height:20px;">
+                                            <span style="color:red;float:right;" asp-validation-for="RepeatPaswoord"></span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="height:80px;">
+                                        <td style="height:140px;">
                                             &nbsp;
                                         </td>
                                     </tr>
