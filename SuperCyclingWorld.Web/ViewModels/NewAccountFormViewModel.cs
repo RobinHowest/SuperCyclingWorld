@@ -15,11 +15,12 @@ namespace SuperCyclingWorld.Web.ViewModels
         public string Achternaam { get; set; }
         [Required(ErrorMessage = "*")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true, NullDisplayText = "NULL")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime GeboorteDatum { get; set; }
         [Required(ErrorMessage = "*")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$", ErrorMessage ="Dit email adres is niet correct !")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = " * ")]
         public string Paswoord { get; set; }
         [Required(ErrorMessage = "*")]
         public string RepeatPaswoord { get; set; }

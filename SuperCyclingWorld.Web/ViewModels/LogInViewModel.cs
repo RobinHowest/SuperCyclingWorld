@@ -12,6 +12,7 @@ namespace SuperCyclingWorld.Web.ViewModels
         [Required(ErrorMessage = "*")]
         public string Paswoord { get; set; }
         [Required(ErrorMessage = "*")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$", ErrorMessage = "Dit email adres is niet correct !")]
         public string Email_UserName { get; set; }
 
     }
