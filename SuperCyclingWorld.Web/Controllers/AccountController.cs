@@ -30,8 +30,13 @@ namespace SuperCyclingWorld.Web.Controllers
 
         [Route("/AccountController")]
         [Route("/AccountController/{PersonId}")]
-        public async Task<IActionResult> Index(Guid personId)
+        public async Task<IActionResult> Index(Guid? personId)
         {
+
+            if(personId == null)
+            {
+                return NotFound();
+            }
 
             Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == personId).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
             if(account1 == null)
