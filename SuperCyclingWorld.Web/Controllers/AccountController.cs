@@ -95,7 +95,7 @@ namespace SuperCyclingWorld.Web.Controllers
             {
                 if (newAccountFormVm.RegisteredAS == "Supporter")
                 {
-                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord, newAccountFormVm.Email);
+                    Supporter newSupporter = new Supporter(newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord, newAccountFormVm.Email, newAccountFormVm.GeboorteDatum);
                     _dbContext.Supporters.Add(newSupporter);
                     _dbContext.SaveChanges();
 
@@ -104,7 +104,7 @@ namespace SuperCyclingWorld.Web.Controllers
                 }
                 else
                 {
-                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord, newAccountFormVm.Email);
+                    Wielrenner newWielrenner = new Wielrenner((Guid)newAccountFormVm.ClubId, newAccountFormVm.Voornaam, newAccountFormVm.Achternaam, newAccountFormVm.Paswoord, newAccountFormVm.Email, newAccountFormVm.GeboorteDatum);
                    
                     _dbContext.Wielrenners.Add(newWielrenner);
                    

@@ -20,13 +20,14 @@ namespace SuperCyclingWorld.Core.Entities.Base
             Id = Guid.NewGuid();
         }
 
-        public Persoon(string voornaam, string achternaam, string paswoord, string email)
+        public Persoon(string voornaam, string achternaam, string paswoord, string email, DateTime geboorteDatum)
         {
             Id = Guid.NewGuid();
             Voornaam = voornaam;
             Achternaam = achternaam;
             Paswoord = MD5.CreateMD5(paswoord);
             Email = email;
+            GeboorteDatum = geboorteDatum;
         }
     }
 }

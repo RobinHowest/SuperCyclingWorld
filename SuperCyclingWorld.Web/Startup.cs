@@ -35,7 +35,12 @@ namespace SuperCyclingWorld.Web
 
             services.AddDbContext<SCWDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SCWDbContext")));
 
-            services.AddSession();
+            services.AddSession(options =>
+            {
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.HttpOnly = true;
+                options.IdleTimeout = TimeSpan.FromSeconds(1200);
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

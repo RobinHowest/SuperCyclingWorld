@@ -14,7 +14,9 @@ namespace SuperCyclingWorld.Web.ViewModels
         [Required(ErrorMessage = "*")]
         public string Achternaam { get; set; }
         [Required(ErrorMessage = "*")]
-        public DateTime GeboorteDatum { get; set; } = DateTime.Now;
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true, NullDisplayText = "NULL")]
+        [DataType(DataType.DateTime)]
+        public DateTime GeboorteDatum { get; set; }
         [Required(ErrorMessage = "*")]
         public string Email { get; set; }
         [Required(ErrorMessage = "*")]
