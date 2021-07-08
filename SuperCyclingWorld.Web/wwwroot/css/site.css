@@ -24,6 +24,14 @@ nav {
     /*background: linear-gradient(180deg, #011368 0%, #011368 0%, #141414 100%, #EEC643 100%);*/
 }
 
+footer{
+    background:black;
+    color:white;
+    height:25px;
+    position: fixed;
+    bottom:0;
+    width:100%;
+}
 
 
 #scwLogo {
