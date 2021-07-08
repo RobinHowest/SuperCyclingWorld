@@ -56,7 +56,8 @@ namespace SuperCyclingWorld.Web.Controllers
 
             if(tryToLogIn == null)
             {
-                return NotFound();
+                TempData["UnsuccesfullInlogAttempt"] = "Uw Email adres bestaat nog niet in SCW, ga naar de Sign in knop op de homepage en registreer je nu !";
+                return RedirectToAction("index", "info");
             }
 
             Persoon ingelogde = await _dbContext.Wielrenners.Where(w => w.Paswoord == MD5.CreateMD5(logInVm.Paswoord) && w.Id == tryToLogIn.Id).SingleOrDefaultAsync();
@@ -67,7 +68,7 @@ namespace SuperCyclingWorld.Web.Controllers
 
             if (ingelogde == null)
             {
-                TempData["UnsuccesfullInlogAttempt"] = "Verkeerd paswoord, email of gebruikersnaam";
+                TempData["UnsuccesfullInlogAttempt"] = "Verkeerd paswoord !";
                 return RedirectToAction("index", "info");
             }
             HttpContext.Session.SetString("LoggedInId", ingelogde.Id.ToString());

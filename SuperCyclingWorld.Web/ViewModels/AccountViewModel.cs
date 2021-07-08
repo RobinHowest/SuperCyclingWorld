@@ -11,11 +11,11 @@ namespace SuperCyclingWorld.Web.ViewModels
 {
     public class AccountViewModel
     {
-        public Guid Id { get;  set; }
+        public Guid Id { get; set; }
         public string Voornaam { get; set; }
         public string Achternaam { get;  set; }
         public Club Club { get; private set; } = null;
-        public ICollection<ClubSupporter> Clubs { get; private set; }
+        public ICollection<ClubSupporter> Clubs { get; private set; } = null;
         public ICollection<FanRegistratie> Wielrenners { get;  set; }
         public string AccountType { get; private set; }
         public int Leeftijd { get; private set; }
