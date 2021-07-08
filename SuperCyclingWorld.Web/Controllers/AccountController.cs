@@ -33,7 +33,7 @@ namespace SuperCyclingWorld.Web.Controllers
         public async Task<IActionResult> Index(Guid? personId)
         {
 
-            if(personId == null)
+            if(personId == null || HttpContext.Session.GetString("LoggedInId") == null)
             {
                 return NotFound();
             }
