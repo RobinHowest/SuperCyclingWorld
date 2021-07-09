@@ -17,7 +17,6 @@ namespace SuperCyclingWorld.Web.Controllers
     {
         private readonly SCWDbContext _dbContext;
         private readonly AccountTileService _accountTileService;
-        private Persoon Persoon;
 
         public TileController(SCWDbContext dbContext)
         {

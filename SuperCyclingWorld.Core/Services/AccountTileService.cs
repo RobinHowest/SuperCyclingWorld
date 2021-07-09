@@ -19,9 +19,9 @@ namespace SuperCyclingWorld.Core.Services
         private List<AccountTile> GenerateTiles()
         {
 
-            string[] tileNames = { "Profiel", "Fietsen", "Statestieken", "Ritten", "Clubs", "Wielrenners", "Club" };
-            TileType[] tileTypes = { TileType.Persoon, TileType.Wielrenner, TileType.Wielrenner, TileType.Wielrenner, TileType.Supporter, TileType.Supporter, TileType.Wielrenner };
-            string[] tilePictos = { "/images/functionalImages/profielPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/statisticPicto.png", "/images/functionalImages/rittenPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/oneClubPicto.png"  };
+            string[] tileNames = { "Profiel", "Fietsen", "Statestieken", "Ritten", "Clubs", "Wielrenners", "Club", "Options" };
+            TileType[] tileTypes = { TileType.Persoon, TileType.Wielrenner, TileType.Wielrenner, TileType.Wielrenner, TileType.Supporter, TileType.Supporter, TileType.Wielrenner, TileType.Persoon };
+            string[] tilePictos = { "/images/functionalImages/profielPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/statisticPicto.png", "/images/functionalImages/rittenPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/oneClubPicto.png", "/Images/functionalImages/searchWheel.png"  };
 
             List<AccountTile> tiles = new List<AccountTile>();
 
