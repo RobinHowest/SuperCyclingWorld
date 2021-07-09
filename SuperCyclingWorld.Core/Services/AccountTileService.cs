@@ -19,7 +19,7 @@ namespace SuperCyclingWorld.Core.Services
         private List<AccountTile> GenerateTiles()
         {
 
-            string[] tileNames = { "Profiel", "Fietsen", "Statestieken", "Ritten", "Clubs", "Wielrenners", "Club", "Options" };
+            string[] tileNames = { "Profiel", "Fietsen", "Statestieken", "Ritten", "Clubbeheer", "Fanbeheer", "Club", "Options" }; //clubbeheer = Clubs, Fanbeheer = Wielrenners
             TileType[] tileTypes = { TileType.Persoon, TileType.Wielrenner, TileType.Wielrenner, TileType.Wielrenner, TileType.Supporter, TileType.Supporter, TileType.Wielrenner, TileType.Persoon };
             string[] tilePictos = { "/images/functionalImages/profielPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/statisticPicto.png", "/images/functionalImages/rittenPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/clubPicto.png", "/images/functionalImages/oneClubPicto.png", "/Images/functionalImages/searchWheel.png"  };
 

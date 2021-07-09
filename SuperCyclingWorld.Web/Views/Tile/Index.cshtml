@@ -64,9 +64,9 @@
                         @if (Model.SelectedAccountTile == 1)
                         {
                             <h2 style="border-bottom: dotted 3px black">Fietsen</h2>
-                            @if(Model.Fietsen.Count == 0)
+                            @if (Model.Fietsen.Count == 0)
                             {
-                                <br/><br/>
+                                <br /><br />
                                 <p style="padding-left:20px;">Heeft geen fietsen</p>
                             }
 
@@ -81,7 +81,7 @@
                                 <p style="padding-left:20px;">@fiets.Zadel</p>
                             }
 
-                            
+
                         }
                         @if (Model.SelectedAccountTile == 2)
                         {
@@ -91,12 +91,27 @@
                         {
                             <h2 style="border-bottom: dotted 3px black">Ritten</h2>
                         }
+                        @if (Model.SelectedAccountTile == 4)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Clubbeheer</h2>
+                        }
+                        @if (Model.SelectedAccountTile == 5)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Fanbeheer</h2>
+                        }
                         @if (Model.SelectedAccountTile == 6)
                         {
                             <h2 style="border-bottom: dotted 3px black">Mijn Club</h2>
                             <br /><br />
                             <h3>Clubnaam</h3><br />
                             <p style="padding-left:20px;">@Model.Club.Clubnaam</p>
+                        }
+
+                        @if (Model.SelectedAccountTile == 7)
+                        {
+                            <h2 style="border-bottom: dotted 3px black">Options</h2>
+                            <br /><br />
+
                         }
                     </td>
 
