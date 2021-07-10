@@ -38,12 +38,25 @@ namespace SuperCyclingWorld.Web.Controllers
                 return NotFound();
             }
 
+
+                        List<Club> clubs = new List<Club>();
+            List<Wielrenner> wielrenners = new List<Wielrenner>();
+
             Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse(personId)).Include(w => w.Club).Include(w => w.Wielrenners).Include(f => f.Fietsen).SingleOrDefaultAsync();
-            if(account1 == null)
+            if (account1 == null)
             {
+
                 account1 = await _dbContext.Supporters.Where(w => w.Id == Guid.Parse(personId)).Include(w => w.Wielrenners).Include(w => w.Clubs).SingleOrDefaultAsync();
+                Supporter ingelogdeSupporter = (Supporter)account1;
+                foreach(var clubsup in ingelogdeSupporter.Clubs)
+                {
+                    clubs.Add(_dbContext.Clubs.Where(c => c.Id == clubsup.ClubId).SingleOrDefault());
+                    wielrenners = _dbContext.Wielrenners.Where(w => w.ClubId == clubsup.ClubId).ToList();
+                }
+
             }
-            AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles);
+            AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles, clubs, wielrenners);
+
             accountVm.SelectedAccountTile = id;
 
             return View(accountVm);

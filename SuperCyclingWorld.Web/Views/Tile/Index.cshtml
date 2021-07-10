@@ -94,6 +94,32 @@
                         @if (Model.SelectedAccountTile == 4)
                         {
                             <h2 style="border-bottom: dotted 3px black">Clubbeheer</h2>
+                            <h3 style="padding-top:20px;">Deze clubs staan op je fanlijst</h3>
+                            <div id="clubPlatesContainer">
+                                @foreach (var club in Model.Clubs)
+                                {
+                                    <div class="ClubPlate">
+                                        <div id="crown">
+                                            <img src="~/images/Crown.png" width="200" height="100" />
+                                        </div>
+
+                                        <div id="ClubPlateBorder">
+                                            <div class="ClubPlateContent" id="Clubnaam">
+                                                @club.Clubnaam
+                                            </div>
+                                            <div class='ClubPlateContent' id="ClubInfo">
+                                                Leden: @club.Leden.Count<br /><br />
+                                                Opgericht: 1992<br /><br />
+                                                Records: 4
+                                            </div>
+                                            <div id="EraseClubFromFanList">
+                                                <img src="~/images/functionalImages/close_box_red.png" width="25" height="25" title="Verwijder" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+                            </div>
                         }
                         @if (Model.SelectedAccountTile == 5)
                         {

@@ -15,20 +15,21 @@ namespace SuperCyclingWorld.Web.ViewModels
         public string Voornaam { get; set; }
         public string Achternaam { get;  set; }
         public Club Club { get; private set; } = null;
-        public ICollection<ClubSupporter> Clubs { get; private set; } = null;
-        public ICollection<FanRegistratie> Wielrenners { get;  set; }
+        public ICollection<Club> Clubs { get; private set; } = null;
+        public ICollection<Wielrenner> Wielrenners { get;  set; }
         public string AccountType { get; private set; }
         public int Leeftijd { get; private set; }
         public ICollection<Fiets> Fietsen { get; private set; } = new List<Fiets>();
         public List<AccountTile> AccountTiles { get; set; } = new List<AccountTile>();
         public int SelectedAccountTile { get; set; } = 0;
-        public AccountViewModel(Persoon account, ICollection<AccountTile>accountTiles)
+        public AccountViewModel(Persoon account, ICollection<AccountTile>accountTiles, ICollection<Club> clubs, ICollection<Wielrenner> wielrenners)
         {
    
             Id = account.Id;
             Voornaam = account.Voornaam;
             Achternaam = account.Achternaam;
-            Wielrenners = account.Wielrenners;
+            Wielrenners = wielrenners;
+            Clubs = clubs;
             Leeftijd = DateTime.Now.Year - account.GeboorteDatum.Year;
             SetAccount(account);
             GetAccountTiles(accountTiles);
@@ -44,7 +45,6 @@ namespace SuperCyclingWorld.Web.ViewModels
                 AccountType = "Wielrenner";
                 Wielrenner convertedPersoon = (Wielrenner)account;
                 Club = convertedPersoon.Club;
-                Wielrenners = convertedPersoon.Wielrenners;
                 Fietsen = convertedPersoon.Fietsen;
             }
 
@@ -52,9 +52,6 @@ namespace SuperCyclingWorld.Web.ViewModels
             {
                 AccountType = "Supporter";
                 Supporter convertedPersoon = (Supporter)account;
-                Wielrenners = convertedPersoon.Wielrenners;
-                Clubs = convertedPersoon.Clubs;
-                Wielrenners = convertedPersoon.Wielrenners;
 
             }
         }

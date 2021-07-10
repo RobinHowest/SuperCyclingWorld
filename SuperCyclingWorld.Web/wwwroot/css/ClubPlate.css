@@ -1,0 +1,56 @@
+.ClubPlate{
+    width:200px;
+    height:300px;
+    margin:50px;
+  
+}
+
+.ClubPlateContent {
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: bolder;
+    text-shadow: 0.5px 0.5px white, -1px -1px #EEC643;
+}
+
+#Clubnaam{
+    height:80px;
+    border-bottom: dotted 5px white;
+
+}
+
+#ClubInfo{
+    height:120px;
+    padding-top:60px;
+
+}
+
+#ClubPlateBorder{
+    height: 300px;
+    position:relative;
+    width:100%;
+    background: rgb(238,198,67);
+    background: linear-gradient(90deg, rgba(238,198,67,1) 0%, rgba(193,149,10,1) 0%, rgba(238,212,123,1) 45%, rgba(238,212,123,1) 57%, rgba(193,149,10,1) 100%, rgba(238,212,123,1) 100%, rgba(13,33,161,1) 100%);
+    border-radius: 20px;
+    border: 5px inset #EEC643;
+    box-sizing: border-box;
+    /*box-shadow: 0px 0px 31px 5px #7c6922;*/
+}
+
+#clubPlatesContainer{
+    display:flex;
+    height:100%;
+    width:100%;
+    justify-content: flex-start;
+    justify-items:center;
+    flex-wrap: wrap;
+}
+#EraseClubFromFanList {
+    position: absolute;
+    text-align: center;
+    bottom: -50px;
+    left: 80px;
+    width: 25px;
+    height: 25px;
+    cursor:pointer;
+}

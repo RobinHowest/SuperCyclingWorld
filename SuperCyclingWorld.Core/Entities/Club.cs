@@ -10,6 +10,7 @@ namespace SuperCyclingWorld.Core.Entities
         public Guid Id { get; private set; }
         public string Clubnaam { get; private set; }
         public Guid? Clubleider { get; private set; }
+        public ICollection<Wielrenner> Leden { get; private set; }
         public ICollection<ClubSupporter> ClubSupporters { get; private set; }
 
         public Club()
