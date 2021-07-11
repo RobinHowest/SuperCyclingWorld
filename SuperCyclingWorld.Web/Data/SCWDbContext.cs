@@ -17,6 +17,7 @@ namespace SocialCyclingWorld.Web.Data
         public DbSet<Fiets> Fietsen { get; set; }
         public DbSet<Supporter> Supporters { get; set; }
         public DbSet<Record> Records { get; set; }
+        public DbSet<Rit> Ritten { get; set; }
 
         public SCWDbContext(DbContextOptions<SCWDbContext> options) : base(options) 
         {
