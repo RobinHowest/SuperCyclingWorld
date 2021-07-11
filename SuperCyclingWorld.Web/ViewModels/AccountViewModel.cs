@@ -48,7 +48,7 @@ namespace SuperCyclingWorld.Web.ViewModels
 
         private void UpdateAantalRecords()
         {
-            AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Id == Id).Select(r => r.Wielrenner.AantalRecords).SingleOrDefault();
+            AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Id == Id).Count();
         }
 
         private void SetAccount(Persoon account)
