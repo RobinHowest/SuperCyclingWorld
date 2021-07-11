@@ -50,8 +50,11 @@ namespace SuperCyclingWorld.Web.RecordZoeker
         {
 
             int maxKMSiteNiveau = _dbContext.Wielrenners.Max(w => w.TotaalAantalGeredenKilometers);
-            Wielrenner wielrennerSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMSiteNiveau).Include(c => c.Club).SingleOrDefault();
-            RecordList.Records.Add(new Record(wielrennerSelected, Recordtype.Site, "Kilometervreter (Siteniveau)", maxKMSiteNiveau, "Kilometer"));
+            List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMSiteNiveau).Include(c => c.Club).ToList();
+            foreach (Wielrenner wielrenner in wielrennersSelected)
+            {
+                RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Kilometervreter (Siteniveau)", maxKMSiteNiveau, "KM/Uur"));
+            }
 
 
         }
@@ -62,8 +65,11 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             foreach (Club club in _dbContext.Clubs.OrderBy(c => c.Id).ToList())
             {
                 int maxKMClubNiveau = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.TotaalAantalGeredenKilometers);
-                Wielrenner wielrennerSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMClubNiveau && w.ClubId == club.Id).SingleOrDefault();
-                RecordList.Records.Add(new Record(wielrennerSelected, Recordtype.Club, "Kilometervreter (Clubniveau)", maxKMClubNiveau, "Kilometer"));
+                List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMClubNiveau && w.ClubId == club.Id).ToList();
+                foreach (Wielrenner wielrenner in wielrennersSelected)
+                {
+                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Club, "Kilometervreter (Clubniveau)", maxKMClubNiveau, "KM/Uur"));
+                }
             }
 
 
