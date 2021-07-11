@@ -20,6 +20,31 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             _dbContext = dbContext;
             
         }
+        public void FillInRecords()
+        {
+            if (SearchedForSiteRecords == false)
+            {
+                GetWielrenner_Highest_KM_Site();
+                GetWielrenner_Highest_KM_Club();
+                GetWielrenner_Highest_Gemiddelde_KM_h_Site();
+                GetWielrenner_Highest_Gemiddelde_KM_h_Club();
+
+                foreach (Record record in RecordList.Records)
+                {
+                    if (record.RecordType == Recordtype.Site)
+                    {
+                        record.Wielrenner.Club.AantalRecords++;
+                    }
+
+                    if (record.RecordType == Recordtype.Club)
+                    {
+                        record.Wielrenner.AantalRecords++;
+                    }
+
+                }
+                SearchedForSiteRecords = true;
+            }
+        }
 
         private void GetWielrenner_Highest_KM_Site()
         {
@@ -43,28 +68,37 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
 
         }
-        public void FillInRecords()
+
+        private void GetWielrenner_Highest_Gemiddelde_KM_h_Site()
         {
-            if (SearchedForSiteRecords == false)
+
+            double maxGemiddeld_KM_h = _dbContext.Wielrenners.Max(w => w.GemiddeldKm_h);
+            List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.GemiddeldKm_h == maxGemiddeld_KM_h).ToList();
+
+            foreach(Wielrenner wielrenner in wielrennersSelected)
             {
-                GetWielrenner_Highest_KM_Site();
-                GetWielrenner_Highest_KM_Club();
-
-                foreach (Record record in RecordList.Records)
-                {
-                    if (record.RecordType == Recordtype.Site)
-                    {
-                        record.Wielrenner.Club.AantalRecords++;
-                    }
-
-                    if (record.RecordType == Recordtype.Club)
-                    {
-                        record.Wielrenner.AantalRecords++;
-                    }
-
-                }
-                SearchedForSiteRecords = true;
+                RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Snelheidsduivel (Siteniveau)", (int)maxGemiddeld_KM_h, "KM/Uur"));
             }
+
+
         }
+
+        private void GetWielrenner_Highest_Gemiddelde_KM_h_Club()
+        {
+
+            foreach (Club club in _dbContext.Clubs.OrderBy(c => c.Id).ToList())
+            {
+                double maxGemiddeld_KM_h = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.GemiddeldKm_h);
+                List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.GemiddeldKm_h == maxGemiddeld_KM_h && w.ClubId == club.Id).ToList();
+
+                foreach (Wielrenner wielrenner in wielrennersSelected)
+                {
+                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Club, "Snelheidsduivel (Clubniveau)", (int)maxGemiddeld_KM_h, "KM/Uur"));
+                }
+            }
+
+
+        }
+
     }
 }

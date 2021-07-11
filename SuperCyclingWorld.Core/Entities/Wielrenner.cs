@@ -13,6 +13,7 @@ namespace SuperCyclingWorld.Core.Entities
         public ICollection<WielrennerRecords> Records { get; private set; }
         public int AantalRecords { get; set; }
         public int TotaalAantalGeredenKilometers { get; set; }
+        public double GemiddeldKm_h { get; set; }
         public Wielrenner()
         {
 

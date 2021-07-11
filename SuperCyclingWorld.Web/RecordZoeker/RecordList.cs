@@ -8,6 +8,6 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 {
     public static class RecordList
     {
-        public static List<Record> Records { get; private set; } = new List<Record>();
+        public static List<Record> Records { get; set; } = new List<Record>();
     }
 }
