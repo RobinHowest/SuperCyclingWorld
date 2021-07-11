@@ -13,12 +13,12 @@ namespace SuperCyclingWorld.Web.RecordZoeker
     {
 
         private readonly SCWDbContext _dbContext;
-
+        private static bool SearchedForSiteRecords = false;
 
         public RecordsZoeker(SCWDbContext dbContext)
         {
             _dbContext = dbContext;
-
+            
         }
 
         private void GetWielrenner_Highest_KM_Site()
@@ -45,23 +45,26 @@ namespace SuperCyclingWorld.Web.RecordZoeker
         }
         public void FillInRecords()
         {
-            GetWielrenner_Highest_KM_Site();
-            GetWielrenner_Highest_KM_Club();
-
-            foreach (Record record in RecordList.Records)
+            if (SearchedForSiteRecords == false)
             {
-                if (record.RecordType == Recordtype.Site)
-                {
-                    record.Wielrenner.Club.AantalRecords++;
-                }
+                GetWielrenner_Highest_KM_Site();
+                GetWielrenner_Highest_KM_Club();
 
-                if(record.RecordType == Recordtype.Club)
+                foreach (Record record in RecordList.Records)
                 {
-                    record.Wielrenner.AantalRecords++;                    
-                }
+                    if (record.RecordType == Recordtype.Site)
+                    {
+                        record.Wielrenner.Club.AantalRecords++;
+                    }
 
+                    if (record.RecordType == Recordtype.Club)
+                    {
+                        record.Wielrenner.AantalRecords++;
+                    }
+
+                }
+                SearchedForSiteRecords = true;
             }
-
         }
     }
 }

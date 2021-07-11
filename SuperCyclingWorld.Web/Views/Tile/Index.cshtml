@@ -54,11 +54,19 @@
                             <br />
                             <p style="padding-left:20px;">Leeftijd: @Model.Leeftijd jaar</p>
                             <br />
+                            @if (Model.AccountType == "Wielrenner")
+                            {
+                                <h3>Club Records</h3>
+                                <br />
+                                <p style="padding-left:20px;">hoi</p>
+                            }
+
                             @if (Model.Club != null)
                             {
                                 <h3>Club</h3>
                                 <br />
                                 <p style="padding-left:20px;">@Model.Club.Clubnaam</p>
+
                             }
                         }
                         @if (Model.SelectedAccountTile == 1)
