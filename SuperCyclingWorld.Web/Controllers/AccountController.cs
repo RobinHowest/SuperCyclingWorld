@@ -7,6 +7,7 @@ using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Core.Enums;
 using SuperCyclingWorld.Core.HelpClasses;
 using SuperCyclingWorld.Core.Services;
+using SuperCyclingWorld.Web.RecordZoeker;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,13 @@ namespace SuperCyclingWorld.Web.Controllers
 
         private readonly SCWDbContext _dbContext;
         private readonly AccountTileService _accountTileService;
+        private readonly RecordsZoeker _recordZoeker;
 
         public AccountController(SCWDbContext dbContext)
         {
             _dbContext = dbContext;
             _accountTileService = new AccountTileService();
+            _recordZoeker = new RecordsZoeker(_dbContext);
         }
 
         [Route("/AccountController")]
@@ -33,13 +36,14 @@ namespace SuperCyclingWorld.Web.Controllers
         public async Task<IActionResult> Index(Guid? personId)
         {
 
-            if(personId == null || HttpContext.Session.GetString("LoggedInId") == null)
+            if (personId == null || HttpContext.Session.GetString("LoggedInId") == null)
             {
                 return NotFound();
             }
 
             List<Club> clubs = new List<Club>();
             List<Wielrenner> wielrenners = new List<Wielrenner>();
+            _recordZoeker.FillInRecords();
 
 
             Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == personId).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();

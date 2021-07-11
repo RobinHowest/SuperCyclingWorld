@@ -16,6 +16,7 @@ namespace SocialCyclingWorld.Web.Data
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Fiets> Fietsen { get; set; }
         public DbSet<Supporter> Supporters { get; set; }
+        public DbSet<Record> Records { get; set; }
 
         public SCWDbContext(DbContextOptions<SCWDbContext> options) : base(options) 
         {
@@ -31,6 +32,9 @@ namespace SocialCyclingWorld.Web.Data
 
             modelBuilder.Entity<ClubSupporter>()
                 .HasKey(cs => new { cs.ClubId, cs.SupporterId });
+
+            modelBuilder.Entity<WielrennerRecords>()
+                .HasKey(wr => new { wr.RecordId, wr.WielrennerId });
 
             modelBuilder.Entity<Wielrenner>()
                 .Property(w => w.ClubId)

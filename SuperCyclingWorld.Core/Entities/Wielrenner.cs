@@ -7,10 +7,11 @@ namespace SuperCyclingWorld.Core.Entities
 {
     public class Wielrenner : Persoon
     {
-        public Guid? ClubId { get; private set; }
+        public Guid ClubId { get; private set; }
         public Club Club { get; private set; }
         public ICollection<Fiets> Fietsen { get; private set; }
-
+        public ICollection<WielrennerRecords> Records { get; private set; }
+        public int TotaalAantalGeredenKilometers { get; set; }
         public Wielrenner()
         {
 

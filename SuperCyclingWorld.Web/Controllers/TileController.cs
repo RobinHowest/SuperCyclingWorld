@@ -5,6 +5,7 @@ using SocialCyclingWorld.Web.Data;
 using SuperCyclingWorld.Core.Entities;
 using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Core.Services;
+using SuperCyclingWorld.Web.RecordZoeker;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace SuperCyclingWorld.Web.Controllers
             }
 
 
-                        List<Club> clubs = new List<Club>();
+            List<Club> clubs = new List<Club>();
             List<Wielrenner> wielrenners = new List<Wielrenner>();
 
             Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == Guid.Parse(personId)).Include(w => w.Club).Include(w => w.Wielrenners).Include(f => f.Fietsen).SingleOrDefaultAsync();
