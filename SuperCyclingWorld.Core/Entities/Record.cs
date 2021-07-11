@@ -13,7 +13,7 @@ namespace SuperCyclingWorld.Core.Entities
         public string Recordnaam { get; set; }
         public int RecordCijfer { get; set; }
         public string RecordEenheid { get; set; }
-
+        public string Thropy { get; set; }
 
         public ICollection<WielrennerRecords> WielrennerRecords { get; set; }
 
@@ -29,8 +29,23 @@ namespace SuperCyclingWorld.Core.Entities
             Recordnaam = recordnaam;
             RecordCijfer = recordcijfer;
             RecordEenheid = recordeenheid;
+            SetTrophy();
         }
 
-
+        private void SetTrophy()
+        {
+            if(RecordType == Recordtype.Site)
+            {
+                Thropy = "/images/functionalImages/SiteRecordThropy.png";
+            }
+            if (RecordType == Recordtype.Club)
+            {
+                Thropy = "/images/functionalImages/ClubRecordThropy.png";
+            }
+            if (RecordType == Recordtype.Wielrenner)
+            {
+                Thropy = "/images/functionalImages/PersonalRecordThropy.png";
+            }
+        }
     }
 }

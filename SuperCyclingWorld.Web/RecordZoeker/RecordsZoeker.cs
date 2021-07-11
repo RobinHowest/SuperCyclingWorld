@@ -26,7 +26,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
             int maxKMSiteNiveau = _dbContext.Wielrenners.Max(w => w.TotaalAantalGeredenKilometers);
             Wielrenner wielrennerSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMSiteNiveau).Include(c => c.Club).SingleOrDefault();
-            RecordList.Records.Add(new Record(wielrennerSelected, Recordtype.Site, "Record hoogste KM", maxKMSiteNiveau, "Kilometer"));
+            RecordList.Records.Add(new Record(wielrennerSelected, Recordtype.Site, "Kilometervreter (Siteniveau)", maxKMSiteNiveau, "Kilometer"));
 
 
         }
@@ -38,7 +38,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             {
                 int maxKMClubNiveau = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.TotaalAantalGeredenKilometers);
                 Wielrenner wielrennerSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMClubNiveau && w.ClubId == club.Id).SingleOrDefault();
-                RecordList.Records.Add(new Record(wielrennerSelected, Recordtype.Club, "Record hoogste KM ", maxKMClubNiveau, "Kilometer"));
+                RecordList.Records.Add(new Record(wielrennerSelected, Recordtype.Club, "Kilometervreter (Clubniveau)", maxKMClubNiveau, "Kilometer"));
             }
 
 
