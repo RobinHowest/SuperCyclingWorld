@@ -54,11 +54,14 @@
                             <br />
                             <p style="padding-left:20px;">Leeftijd: @Model.Leeftijd jaar</p>
                             <br />
+                            <br/>
                             @if (Model.AccountType == "Wielrenner")
                             {
                                 <h3>Club Records</h3>
                                 <br />
-                                <p style="padding-left:20px;">hoi</p>
+                                <p style="padding-left:20px;">Aantal club records van @Model.Voornaam : @Model.AantalRecords</p>
+                                <br />
+                                <br />
                             }
 
                             @if (Model.Club != null)

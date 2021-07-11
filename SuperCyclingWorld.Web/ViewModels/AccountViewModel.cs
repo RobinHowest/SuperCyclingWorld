@@ -23,6 +23,7 @@ namespace SuperCyclingWorld.Web.ViewModels
         public ICollection<Fiets> Fietsen { get; private set; } = new List<Fiets>();
         public List<AccountTile> AccountTiles { get; set; } = new List<AccountTile>();
         public int SelectedAccountTile { get; set; } = 0;
+        public int AantalRecords { get; set; }
         public AccountViewModel(Persoon account, ICollection<AccountTile>accountTiles, ICollection<Club> clubs, ICollection<Wielrenner> wielrenners)
         {
             
@@ -34,7 +35,7 @@ namespace SuperCyclingWorld.Web.ViewModels
             Leeftijd = DateTime.Now.Year - account.GeboorteDatum.Year;
             SetAccount(account);
             GetAccountTiles(accountTiles);
-            UpdateClubs();
+
         }
 
         private void UpdateClubs()
@@ -43,6 +44,11 @@ namespace SuperCyclingWorld.Web.ViewModels
             {
                     club.AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Club.Id == club.Id && r.RecordType == Recordtype.Site).Count();
             }       
+        }
+
+        private void UpdateAantalRecords()
+        {
+            AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Id == Id).Select(r => r.Wielrenner.AantalRecords).SingleOrDefault();
         }
 
         private void SetAccount(Persoon account)
@@ -54,6 +60,8 @@ namespace SuperCyclingWorld.Web.ViewModels
                 Wielrenner convertedPersoon = (Wielrenner)account;
                 Club = convertedPersoon.Club;
                 Fietsen = convertedPersoon.Fietsen;
+                UpdateClubs();
+                UpdateAantalRecords();
             }
 
             else
