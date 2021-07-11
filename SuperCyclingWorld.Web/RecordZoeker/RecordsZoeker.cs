@@ -28,6 +28,8 @@ namespace SuperCyclingWorld.Web.RecordZoeker
                 GetWielrenner_Highest_KM_Club();
                 GetWielrenner_Highest_Gemiddelde_KM_h_Site();
                 GetWielrenner_Highest_Gemiddelde_KM_h_Club();
+                GetWielrenner_Highest_Gemiddelde_KM_rit_Site();
+                GetWielrenner_Highest_Gemiddelde_KM_rit_Club();
 
                 foreach (Record record in RecordList.Records)
                 {
@@ -105,6 +107,38 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
 
         }
+
+        private void GetWielrenner_Highest_Gemiddelde_KM_rit_Site()
+        {
+
+            int maxGemiddeld_KM_h = _dbContext.Wielrenners.Max(w => w.GemiddeldeKM_Rit);
+            List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.GemiddeldeKM_Rit == maxGemiddeld_KM_h).ToList();
+
+            foreach (Wielrenner wielrenner in wielrennersSelected)
+            {
+                RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Hoogste Gemiddelde KM/Rit (Siteniveau)", (int)maxGemiddeld_KM_h, "Kilometer"));
+            }
+
+
+        }
+
+        private void GetWielrenner_Highest_Gemiddelde_KM_rit_Club()
+        {
+
+            foreach (Club club in _dbContext.Clubs.OrderBy(c => c.Id).ToList())
+            {
+                double maxGemiddeld_KM_h = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.GemiddeldKm_h);
+                List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.GemiddeldeKM_Rit == maxGemiddeld_KM_h && w.ClubId == club.Id).ToList();
+
+                foreach (Wielrenner wielrenner in wielrennersSelected)
+                {
+                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Club, "Hoogste Gemiddelde KM/Rit (Clubniveau)", (int)maxGemiddeld_KM_h, "Kilometer"));
+                }
+            }
+
+
+        }
+
 
     }
 }
