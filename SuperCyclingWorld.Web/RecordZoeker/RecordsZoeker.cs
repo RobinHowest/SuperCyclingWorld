@@ -54,6 +54,12 @@ namespace SuperCyclingWorld.Web.RecordZoeker
                 {
                     record.Wielrenner.Club.AantalRecords++;
                 }
+
+                if(record.RecordType == Recordtype.Club)
+                {
+                    record.Wielrenner.AantalRecords++;                    
+                }
+
             }
 
         }
