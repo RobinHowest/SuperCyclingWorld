@@ -24,6 +24,7 @@ namespace SuperCyclingWorld.Web.Controllers
         private readonly AccountTileService _accountTileService;
         private readonly RecordsZoeker _recordZoeker;
 
+
         public AccountController(SCWDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -96,17 +97,28 @@ namespace SuperCyclingWorld.Web.Controllers
             return RedirectToAction("index", new { personId = ingelogde.Id });
         }
 
-        // GET: AccountController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         [Route("/AccountController/NewAccount")]
         public IActionResult NewAccount()
         {
             return View();
         }
+
+        [Route("/AccountController/ViewAllClubs")]
+        public IActionResult ViewAllClubs()
+        {
+            ClubListViewModel clubListVm = new ClubListViewModel();
+            clubListVm.Clubs = _dbContext.Clubs.OrderBy(c => c.Clubnaam).Include(c => c.Leden).Include(c => c.ClubSupporters).ToList(); 
+            return View(clubListVm);
+        }
+
+        [Route("/AccountController/ViewAllWielrenners")]
+        public IActionResult ViewAllWielrenners()
+        {
+            return View();
+        }
+
+
 
         [HttpPost]
         [Route("/AccountController/NewAccount")]

@@ -1,0 +1,55 @@
+﻿@model ClubListViewModel
+@{
+    <div id="AccountScreen">
+        <div id="aside">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="padding-left:20px;padding-right:20px;font-family:StatisticsFont;height:100px;">
+                        <b>Account</b> <br /> <br /> No Account <img style="float:right;" height="40" width="40" src="~/images/functionalImages/close_box_red.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="accountContent">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="        vertical-align: top;
+        padding: 10px;
+        width: 200px;
+        border-right: solid black 1px;
+        font-family: StatisticsFont;
+        background: #0D21A1;
+        color:white;
+
+">
+                    </td>
+                    <td style="text-align:start;">
+                        <div id="clubPlatesContainer">
+                            @foreach(var club in Model.Clubs)
+                            {
+                                    <div class="ClubPlate ">
+                                        <div id="crown">
+                                            <img src="~/images/Crown.png" width="200" height="100" />
+                                        </div>
+
+                                        <div id="ClubPlateBorder" class="ClubPlateOnHomePage">
+                                            <div class="ClubPlateContent " id="Clubnaam">
+                                                @club.Clubnaam
+                                            </div>
+                                            <div class='ClubPlateContent' id="ClubInfo">
+                                                Leden: @club.Leden.Count<br /><br />
+                                                Opgericht: @club.Oprichtingsjaar<br /><br />
+                                                Records: @club.AantalRecords
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+}

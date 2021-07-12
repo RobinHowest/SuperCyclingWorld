@@ -1,7 +1,7 @@
 ﻿@model ChartBoxViewModel
 
 <div class="ChartBox">
-    <a asp-action="newAccount" asp-controller="Account" asp-route-id="@Model.ChartName">
+    <a asp-action="@Model.Action" asp-controller="Account" asp-route-id="@Model.ChartName">
         <div class="chartPicture">
             <div class="triangle"></div>
             <div class="chartPictogram">

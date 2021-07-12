@@ -13,6 +13,7 @@ namespace SuperCyclingWorld.Core.Entities
         public string ContentText { get; set; }
 
         public string MeerWetenText { get; set; }
+        public string Action { get; set; }
         public ChartBox(string name, string picture, string contentText, string meerWetenText)
         {
             Name = name;

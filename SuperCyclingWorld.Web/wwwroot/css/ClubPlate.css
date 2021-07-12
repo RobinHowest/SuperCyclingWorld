@@ -1,8 +1,8 @@
 .ClubPlate{
     width:200px;
-    height:300px;
-    margin:50px;
-  
+    height:400px;
+    margin: 20px 20px 50px 20px;
+    font-size: 21px;
 }
 
 .ClubPlateContent {
@@ -41,8 +41,7 @@
     display:flex;
     height:100%;
     width:100%;
-    justify-content: flex-start;
-    justify-items:center;
+    align-items:flex-start;
     flex-wrap: wrap;
 }
 #EraseClubFromFanList {
@@ -52,5 +51,13 @@
     left: 80px;
     width: 25px;
     height: 25px;
+    cursor:pointer;
+}
+.ClubPlateOnHomePage {
+    box-shadow: 0px 0px 15px 4px #EEc643;
+}
+
+.ClubPlateOnHomePage:hover {
+    box-shadow: none;
     cursor:pointer;
 }
