@@ -132,7 +132,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
             foreach (Club club in _dbContext.Clubs.OrderBy(c => c.Id).ToList())
             {
-                double maxGemiddeld_KM_h = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.GemiddeldKm_h);
+                double maxGemiddeld_KM_h = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.GemiddeldeKM_Rit);
                 List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.GemiddeldeKM_Rit == maxGemiddeld_KM_h && w.ClubId == club.Id).ToList();
 
                 foreach (Wielrenner wielrenner in wielrennersSelected)
