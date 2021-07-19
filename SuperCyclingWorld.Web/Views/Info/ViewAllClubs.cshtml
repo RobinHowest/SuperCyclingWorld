@@ -21,17 +21,46 @@
         background: #0D21A1;
         color:white;
 
-">
+"> Aangesloten Clubs
                     </td>
-                    <td style="text-align:start;vertical-align:top;background:#0D21A1; box-shadow: inset 0 0 30px 10px white; border-radius:20px;">
-                        <div  style="border-top: solid white 2px;width:90%;margin-left:5%;margin-top:30px;padding:10px;  ">
-                           
-                            @foreach(var club in Model.Clubs)
+                    <td style="text-align:start;vertical-align:top;">
+                        <div  style="width:90%;margin-left:5%;margin-top:30px;padding:10px;  ">
+                            <h3>Clubs gerangschikt op basis van siterecords</h3>
+                            <br/>
+                            <br/>
+                            <p style="font-family:StatisticsFont">THE SITE RECORD CLUB CHAMPION !</p>
+                            @for(var i = 1; i < Model.Clubs.Count + 1; i++)
                             {
-                                <div style="width:100%;color:white;font-family:StatisticsFont;">
-                                    <p>@club.Clubnaam</p>
-                                    <p>@club.AantalRecords</p>
-                                </div>
+                                int tel = 0;
+                        <div class="Champion" style="width:100%;font-family:StatisticsFont;background:#EEF0F2;">
+
+                            <div style="font-size:40pt;float:left;width:50px;text-align:center;background:#EEC643;margin-right:15px;">@i</div>
+                            <h2>@Model.Clubs[i - 1].Clubnaam</h2>
+                            <p style="margin-top:10px;">Site records: @Model.Clubs[i - 1].AantalRecords</p>
+                            <br />
+                            <br />
+                            <h3>Kampioen</h3>
+                            <br />
+                                <ul style="margin-left:50px;">                             
+                            @foreach (var recordhouder in Model.Recordhouders)
+                            {
+                                if (Model.Clubs[i - 1].AantalRecords != 0 && Model.Clubs[i - 1].Id == recordhouder.Club.Id )
+                                {
+                                    var recordnaam = @Model.Records[tel].Recordnaam.Split("(");
+
+                                        <li style="padding:5px;"><b>@recordhouder.Voornaam @recordhouder.Achternaam </b><br/> @recordnaam[0] met <b>@Model.Records[tel].RecordCijfer </b>@Model.Records[tel].RecordEenheid.</li>
+                                    tel++;
+                                }
+                                else
+                                {
+                                    tel++;
+                                }
+
+                            }
+                            </ul>
+                        </div>
+                               
+                            
                             }
                         </div>
                     </td>

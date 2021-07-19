@@ -2,6 +2,7 @@
 using SuperCyclingWorld.Core.Entities;
 using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Web.Data;
+using SuperCyclingWorld.Web.RecordZoeker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace SocialCyclingWorld.Web.Data
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Fiets> Fietsen { get; set; }
         public DbSet<Supporter> Supporters { get; set; }
-        public DbSet<Record> Records { get; set; }
         public DbSet<Rit> Ritten { get; set; }
+        public DbSet<RecordHistory> RecordHistories { get; set; }
 
         public SCWDbContext(DbContextOptions<SCWDbContext> options) : base(options) 
         {

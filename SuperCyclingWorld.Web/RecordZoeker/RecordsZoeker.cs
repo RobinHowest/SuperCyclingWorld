@@ -52,7 +52,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
                 SearchedForSiteRecords = true;
             }
         }
-
+        //RECORD ------------- Meeste Kilometers (club en siteniveau)
         private void GetWielrenner_Highest_KM_Site()
         {
 
@@ -81,7 +81,9 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
 
         }
+        // EINDE RECORD
 
+        //RECORD ------------- Meeste Kilometers/uur (club en siteniveau)
         private void GetWielrenner_Highest_Gemiddelde_KM_h_Site()
         {
 
@@ -112,7 +114,9 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
 
         }
+        // EINDE RECORD
 
+        //RECORD ------------- Meeste Kilometers/rit (club en siteniveau)
         private void GetWielrenner_Highest_Gemiddelde_KM_rit_Site()
         {
 
@@ -143,7 +147,14 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
 
         }
+        // EINDE RECORD
 
+
+
+
+
+
+        //Update de records wat betreft het aantal siterecords die clubs op dit moment bezitten.
         private void GiveClubsThereAantalRecords(ICollection<Club> clubs)
         {
             foreach (var club in clubs)

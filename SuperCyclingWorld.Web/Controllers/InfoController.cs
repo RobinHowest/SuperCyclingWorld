@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialCyclingWorld.Web.Data;
+using SuperCyclingWorld.Core.Entities;
 using SuperCyclingWorld.Core.Enums;
 using SuperCyclingWorld.Web.RecordZoeker;
 using SuperCyclingWorld.Web.ViewModels;
@@ -45,6 +46,19 @@ namespace SuperCyclingWorld.Web.Controllers
                 club.AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Club.Id == club.Id && r.RecordType == Recordtype.Site).Count();
             }
             clubListVm.Clubs = clubListVm.Clubs.OrderByDescending(c => c.AantalRecords).ToList();
+            List<Wielrenner> recordhouders = new List<Wielrenner>();
+            List<Record> records = new List<Record>();
+            foreach(var record in RecordList.Records)
+            {
+                if(record.RecordType == Recordtype.Site )
+                {
+                    recordhouders.Add(record.Wielrenner);
+                    records.Add(record);
+                }
+                
+            }
+            clubListVm.Recordhouders = recordhouders;
+            clubListVm.Records = records;
             return View(clubListVm);
         }
 

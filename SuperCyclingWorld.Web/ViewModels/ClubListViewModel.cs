@@ -9,6 +9,7 @@ namespace SuperCyclingWorld.Web.ViewModels
     public class ClubListViewModel
     {
         public List<Club> Clubs { get; set; }
-
+        public List<Wielrenner> Recordhouders { get; set; }
+        public List<Record> Records { get; set; }
     }
 }
