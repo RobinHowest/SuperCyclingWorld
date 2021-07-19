@@ -10,7 +10,6 @@ namespace SuperCyclingWorld.Core.Entities
         public Guid ClubId { get; private set; }
         public Club Club { get; private set; }
         public ICollection<Fiets> Fietsen { get; private set; }
-        public ICollection<WielrennerRecords> Records { get; private set; }
         public ICollection<Rit> Ritten { get; set; }
         public int AantalRecords { get; set; }
         public int TotaalAantalGeredenKilometers { get; set; }

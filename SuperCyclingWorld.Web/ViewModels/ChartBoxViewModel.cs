@@ -13,14 +13,16 @@ namespace SuperCyclingWorld.Web.ViewModels
         public string ChartContentText { get; set; }
         public string MeerWetenText { get; set; }
         public string Action { get; set; }
+        public string Controller { get; set; }
 
-        public ChartBoxViewModel(ChartBox chartBox, string action)
+        public ChartBoxViewModel(ChartBox chartBox, string action, string controller)
         {
             ChartName = chartBox.Name;
             ChartPicture = chartBox.Picture;
             ChartContentText = chartBox.ContentText;
             MeerWetenText = chartBox.MeerWetenText;
             Action = action;
+            Controller = controller;
         }
     }
 }

@@ -9,5 +9,6 @@ namespace SuperCyclingWorld.Web.ViewModels
     public class ClubListViewModel
     {
         public List<Club> Clubs { get; set; }
+
     }
 }

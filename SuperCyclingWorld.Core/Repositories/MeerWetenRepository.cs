@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuperCyclingWorld.Core.Services
+namespace SuperCyclingWorld.Core.Repositories
 {
-    public static class MeerWetenService
+    public static class MeerWetenRepository
     {
         public static string GetMeerWetenOverSignIn()
         {

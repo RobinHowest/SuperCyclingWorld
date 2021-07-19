@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SocialCyclingWorld.Web.Data;
 using SuperCyclingWorld.Core.Entities;
 using SuperCyclingWorld.Core.Entities.Base;
-using SuperCyclingWorld.Core.Services;
-using SuperCyclingWorld.Web.RecordZoeker;
+using SuperCyclingWorld.Core.Repositories;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,12 +16,12 @@ namespace SuperCyclingWorld.Web.Controllers
     public class TileController : Controller
     {
         private readonly SCWDbContext _dbContext;
-        private readonly AccountTileService _accountTileService;
+        private readonly AccountTileRepository _accountTileService;
 
         public TileController(SCWDbContext dbContext)
         {
             _dbContext = dbContext;
-            _accountTileService = new AccountTileService();
+            _accountTileService = new AccountTileRepository();
         }
 
         [Route("/Tile/{id}")]

@@ -20,16 +20,21 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             _dbContext = dbContext;
             
         }
-        public void FillInRecords()
+        public void FillInRecords(ICollection<Club> clubs)
         {
             if (SearchedForSiteRecords == false)
             {
+                //Records
                 GetWielrenner_Highest_KM_Site();
                 GetWielrenner_Highest_KM_Club();
                 GetWielrenner_Highest_Gemiddelde_KM_h_Site();
                 GetWielrenner_Highest_Gemiddelde_KM_h_Club();
                 GetWielrenner_Highest_Gemiddelde_KM_rit_Site();
                 GetWielrenner_Highest_Gemiddelde_KM_rit_Club();
+                //Records
+
+                
+                GiveClubsThereAantalRecords(clubs);// kan pas gebeuren als alle records zijn toegevoegd aan de recordlist !!
 
                 foreach (Record record in RecordList.Records)
                 {
@@ -55,7 +60,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMSiteNiveau).Include(c => c.Club).ToList();
             foreach (Wielrenner wielrenner in wielrennersSelected)
             {
-                RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Kilometervreter (Siteniveau)", maxKMSiteNiveau, "KM/Uur"));
+                RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Kilometervreter (Siteniveau)", maxKMSiteNiveau, "Kilometer"));
             }
 
 
@@ -70,7 +75,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
                 List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.TotaalAantalGeredenKilometers == maxKMClubNiveau && w.ClubId == club.Id).ToList();
                 foreach (Wielrenner wielrenner in wielrennersSelected)
                 {
-                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Club, "Kilometervreter (Clubniveau)", maxKMClubNiveau, "KM/Uur"));
+                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Club, "Kilometervreter (Clubniveau)", maxKMClubNiveau, "Kilometer"));
                 }
             }
 
@@ -139,6 +144,13 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
         }
 
+        private void GiveClubsThereAantalRecords(ICollection<Club> clubs)
+        {
+            foreach (var club in clubs)
+            {
+                club.AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Club.Id == club.Id && r.RecordType == Recordtype.Site).Count();
+            }
+        }
 
     }
 }

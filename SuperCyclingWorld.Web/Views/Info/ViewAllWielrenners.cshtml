@@ -1,0 +1,31 @@
+﻿@model AccountViewModel
+@{
+    <div id="AccountScreen">
+        <div id="aside">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="padding-left:20px;padding-right:20px;font-family:StatisticsFont;height:100px;">
+                        <b>Logged in</b> <br /> <br /> @Model.Voornaam  @Model.Achternaam <img style="float:right;" height="40" width="40" src="~/images/functionalImages/ok.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="accountContent">
+            <table class="accountTableContent">
+                <tr>
+                    <td style="        vertical-align: top;
+        padding: 10px;
+        width: 200px;
+        border-right: solid black 1px;
+        font-family: StatisticsFont;
+        background: #0D21A1;
+        color:white;
+
+">
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+}

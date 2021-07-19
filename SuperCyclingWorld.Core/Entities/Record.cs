@@ -15,8 +15,6 @@ namespace SuperCyclingWorld.Core.Entities
         public string RecordEenheid { get; set; }
         public string Thropy { get; set; }
 
-        public ICollection<WielrennerRecords> WielrennerRecords { get; set; }
-
         public Record()
         {
         }
@@ -47,5 +45,6 @@ namespace SuperCyclingWorld.Core.Entities
                 Thropy = "/images/functionalImages/PersonalRecordThropy.png";
             }
         }
+
     }
 }

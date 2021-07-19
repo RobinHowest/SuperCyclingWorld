@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SocialCyclingWorld.Web.Data;
 
 namespace SuperCyclingWorld.Web.Migrations
 {
     [DbContext(typeof(SCWDbContext))]
-    partial class SCWDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210719111953_RemoveWielrennersRecordsTable")]
+    partial class RemoveWielrennersRecordsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

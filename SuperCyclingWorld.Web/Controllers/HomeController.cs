@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SuperCyclingWorld.Core.Entities;
-using SuperCyclingWorld.Core.Services;
+using SuperCyclingWorld.Core.Repositories;
 using SuperCyclingWorld.Web.Models;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
@@ -28,13 +28,13 @@ namespace SuperCyclingWorld.Web.Controllers
             ViewData["info"] = null;
 
             ChartBoxListViewModel listChartBoxVM = new ChartBoxListViewModel();
-            ChartBox signIn = new ChartBox("Sign Up", "signIn2.png", "Sign up ! En volg je eigen parcours...", MeerWetenService.GetMeerWetenOverSignIn());
-            ChartBox clubs = new ChartBox("Clubs", "clubPicto.png", "Ontdek al onze aangesloten clubs !", MeerWetenService.GetMeerWetenOverClubs());
-            ChartBox wielrenners = new ChartBox("Wielrenners", "clubPicto.png", "Ontdek al onze wielrenners !", MeerWetenService.GetMeerWetenOverClubs());
+            ChartBox signIn = new ChartBox("Sign Up", "signIn2.png", "Sign up ! En volg je eigen parcours...", MeerWetenRepository.GetMeerWetenOverSignIn());
+            ChartBox clubs = new ChartBox("Clubs", "clubPicto.png", "Ontdek al onze aangesloten clubs !", MeerWetenRepository.GetMeerWetenOverClubs());
+            ChartBox wielrenners = new ChartBox("Klassementen", "clubPicto.png", "Benieuwd naar jouw plaats in verschillende categoriën ?", MeerWetenRepository.GetMeerWetenOverClubs());
 
-            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(signIn, "NewAccount"));
-            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(clubs, "ViewAllClubs"));
-            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(wielrenners, "ViewAllWielrenners"));
+            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(signIn, "NewAccount", "Account"));
+            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(clubs, "ViewAllClubs", "Info"));
+            listChartBoxVM.ChartBoxViewModels.Add(new ChartBoxViewModel(wielrenners, "ViewAllWielrenners", "Info"));
 
             return View(listChartBoxVM);
         }

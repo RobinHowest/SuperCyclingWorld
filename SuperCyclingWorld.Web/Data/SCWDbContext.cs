@@ -34,8 +34,6 @@ namespace SocialCyclingWorld.Web.Data
             modelBuilder.Entity<ClubSupporter>()
                 .HasKey(cs => new { cs.ClubId, cs.SupporterId });
 
-            modelBuilder.Entity<WielrennerRecords>()
-                .HasKey(wr => new { wr.RecordId, wr.WielrennerId });
 
             modelBuilder.Entity<Wielrenner>()
                 .Property(w => w.ClubId)

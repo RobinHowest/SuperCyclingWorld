@@ -6,7 +6,7 @@ using SuperCyclingWorld.Core.Entities;
 using SuperCyclingWorld.Core.Entities.Base;
 using SuperCyclingWorld.Core.Enums;
 using SuperCyclingWorld.Core.HelpClasses;
-using SuperCyclingWorld.Core.Services;
+using SuperCyclingWorld.Core.Repositories;
 using SuperCyclingWorld.Web.RecordZoeker;
 using SuperCyclingWorld.Web.ViewModels;
 using System;
@@ -21,19 +21,19 @@ namespace SuperCyclingWorld.Web.Controllers
     {
 
         private readonly SCWDbContext _dbContext;
-        private readonly AccountTileService _accountTileService;
+        private readonly AccountTileRepository _accountTileService;
         private readonly RecordsZoeker _recordZoeker;
 
 
         public AccountController(SCWDbContext dbContext)
         {
             _dbContext = dbContext;
-            _accountTileService = new AccountTileService();
+            _accountTileService = new AccountTileRepository();
             _recordZoeker = new RecordsZoeker(_dbContext);
         }
 
-        [Route("/AccountController")]
-        [Route("/AccountController/{PersonId}")]
+        [Route("/Account")]
+        [Route("/Account/{PersonId}")]
         public async Task<IActionResult> Index(Guid? personId)
         {
 
@@ -44,9 +44,9 @@ namespace SuperCyclingWorld.Web.Controllers
 
             List<Club> clubs = new List<Club>();
             List<Wielrenner> wielrenners = new List<Wielrenner>();
-            _recordZoeker.FillInRecords();
+            _recordZoeker.FillInRecords(_dbContext.Clubs.OrderBy(c => c.Id).ToList());
 
-
+            // je bent met supporters bezig en met de records van de clubs wanneer de supporter zijn favoriete clubs opvraagt.
             Persoon account1 = await _dbContext.Wielrenners.Where(w => w.Id == personId).Include(w => w.Club).Include(w => w.Wielrenners).SingleOrDefaultAsync();
             if(account1 == null)
             {
@@ -58,7 +58,7 @@ namespace SuperCyclingWorld.Web.Controllers
                     clubs.Add(_dbContext.Clubs.Where(c => c.Id == clubsup.ClubId).SingleOrDefault());
                     wielrenners = _dbContext.Wielrenners.Where(w => w.ClubId == clubsup.ClubId).ToList();
                 }
-
+                
             }
             AccountViewModel accountVm = new AccountViewModel(account1, _accountTileService.AccountTiles, clubs, wielrenners);
 
@@ -66,7 +66,7 @@ namespace SuperCyclingWorld.Web.Controllers
         }
 
         [HttpPost]
-        [Route("/AccountController")]
+        [Route("/Account")]
         public async Task<IActionResult> Index(LogInViewModel logInVm)
         {
 
@@ -98,25 +98,13 @@ namespace SuperCyclingWorld.Web.Controllers
         }
 
 
-        [Route("/AccountController/NewAccount")]
+        [Route("/Account/NewAccount")]
         public IActionResult NewAccount()
         {
             return View();
         }
 
-        [Route("/AccountController/ViewAllClubs")]
-        public IActionResult ViewAllClubs()
-        {
-            ClubListViewModel clubListVm = new ClubListViewModel();
-            clubListVm.Clubs = _dbContext.Clubs.OrderBy(c => c.Clubnaam).Include(c => c.Leden).Include(c => c.ClubSupporters).ToList(); 
-            return View(clubListVm);
-        }
 
-        [Route("/AccountController/ViewAllWielrenners")]
-        public IActionResult ViewAllWielrenners()
-        {
-            return View();
-        }
 
 
 

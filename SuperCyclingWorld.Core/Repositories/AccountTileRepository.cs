@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuperCyclingWorld.Core.Services
+namespace SuperCyclingWorld.Core.Repositories
 {
-    public class AccountTileService
+    public class AccountTileRepository
     {
         public List<AccountTile> AccountTiles { get; private set; } = new List<AccountTile>();
 
-        public AccountTileService()
+        public AccountTileRepository()
         {
             AccountTiles = GenerateTiles();
 
