@@ -25,15 +25,16 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             if (SearchedForSiteRecords == false)
             {
                 //Records
-                GetWielrenner_Highest_KM_Site();
-                GetWielrenner_Highest_KM_Club();
+                GetWielrenner_HighestTotal_KM_Site();
+                GetWielrenner_HighestTotal_KM_Club();
                 GetWielrenner_Highest_Gemiddelde_KM_h_Site();
                 GetWielrenner_Highest_Gemiddelde_KM_h_Club();
                 GetWielrenner_Highest_Gemiddelde_KM_rit_Site();
                 GetWielrenner_Highest_Gemiddelde_KM_rit_Club();
+                GetWielrenner_Highest_wattage_site();
                 //Records
 
-                
+
                 GiveClubsThereAantalRecords(clubs);// kan pas gebeuren als alle records zijn toegevoegd aan de recordlist !!
 
                 foreach (Record record in RecordList.Records)
@@ -53,7 +54,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             }
         }
         //RECORD ------------- Meeste Kilometers (club en siteniveau)
-        private void GetWielrenner_Highest_KM_Site()
+        private void GetWielrenner_HighestTotal_KM_Site()
         {
 
             int maxKMSiteNiveau = _dbContext.Wielrenners.Max(w => w.TotaalAantalGeredenKilometers);
@@ -66,7 +67,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
         }
 
-        private void GetWielrenner_Highest_KM_Club()
+        private void GetWielrenner_HighestTotal_KM_Club()
         {
 
             foreach (Club club in _dbContext.Clubs.OrderBy(c => c.Id).ToList())
@@ -149,6 +150,18 @@ namespace SuperCyclingWorld.Web.RecordZoeker
         }
         // EINDE RECORD
 
+        //RECORD ------------- Meeste Kilometers/uur (club en siteniveau)
+        private void GetWielrenner_Highest_wattage_site()
+        {
+                int wattageRecord = _dbContext.Wielrenners.Max(w => w.WattageRecord);
+                List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.WattageRecord == wattageRecord).ToList();
+
+                foreach(Wielrenner wielrenner in wielrennersSelected)
+                {
+                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Hoogste wattage (Siteniveau)", wattageRecord, "Watt"));
+                }
+        }
+        // EINDE RECORD
 
 
 

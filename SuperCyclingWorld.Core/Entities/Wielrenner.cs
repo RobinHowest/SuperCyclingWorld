@@ -15,6 +15,7 @@ namespace SuperCyclingWorld.Core.Entities
         public int TotaalAantalGeredenKilometers { get; set; }
         public double GemiddeldKm_h { get; set; }
         public int GemiddeldeKM_Rit { get; set; }
+        public int WattageRecord { get; set; }
         public Wielrenner()
         {
 
