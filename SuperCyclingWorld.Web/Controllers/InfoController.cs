@@ -44,6 +44,7 @@ namespace SuperCyclingWorld.Web.Controllers
             {
                 club.AantalRecords = RecordList.Records.Where(r => r.Wielrenner.Club.Id == club.Id && r.RecordType == Recordtype.Site).Count();
             }
+            clubListVm.Clubs = clubListVm.Clubs.OrderByDescending(c => c.AantalRecords).ToList();
             return View(clubListVm);
         }
 

@@ -19,14 +19,15 @@ namespace SuperCyclingWorld.Web.Controllers
         public HomeController(IHostingEnvironment environment)
         {
             _enviroment = environment;
-           
+            
+            
         }
 
         [Route("/")]
         public IActionResult Index()
         {
             ViewData["info"] = null;
-
+            HttpContext.Session.Clear();
             ChartBoxListViewModel listChartBoxVM = new ChartBoxListViewModel();
             ChartBox signIn = new ChartBox("Sign Up", "signIn2.png", "Sign up ! En volg je eigen parcours...", MeerWetenRepository.GetMeerWetenOverSignIn());
             ChartBox clubs = new ChartBox("Clubs", "clubPicto.png", "Ontdek al onze aangesloten clubs !", MeerWetenRepository.GetMeerWetenOverClubs());
