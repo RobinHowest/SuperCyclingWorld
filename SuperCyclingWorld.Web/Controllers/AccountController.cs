@@ -109,7 +109,7 @@ namespace SuperCyclingWorld.Web.Controllers
 
 
         [HttpPost]
-        [Route("/AccountController/NewAccount")]
+        [Route("/Account/NewAccount")]
         public IActionResult NewAccount(NewAccountFormViewModel newAccountFormVm)
         {
             
