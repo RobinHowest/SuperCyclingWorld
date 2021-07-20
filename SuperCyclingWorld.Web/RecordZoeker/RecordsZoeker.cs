@@ -194,9 +194,9 @@ namespace SuperCyclingWorld.Web.RecordZoeker
         private void SaveAllRecordsForHistory()
         {
             List<RecordHistory> recordHistoriesExisting = _dbContext.RecordHistories.OrderBy(rh => rh.Id).ToList();
-            if(recordHistoriesExisting.Count == 0)
+            if (recordHistoriesExisting.Count == 0)
             {
-                foreach(var record in RecordList.Records)
+                foreach (var record in RecordList.Records)
                 {
                     _dbContext.RecordHistories.Add(new RecordHistory(record));
                 }
@@ -204,11 +204,11 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             }
             else
             {
-                foreach(var rh in recordHistoriesExisting)
+                foreach (var record in RecordList.Records)
                 {
-                    foreach (var record in RecordList.Records)
+                    foreach(var rh in recordHistoriesExisting)
                     {
-                        if(rh.Recordnaam == record.Recordnaam && rh.RecordCijfer < record.RecordCijfer && rh.WielrennerId == record.Wielrenner.Id && rh.RecordType == record.RecordType)
+                        if(record.RecordType == rh.RecordType && record.Wielrenner.Id == rh.WielrennerId && rh.RecordCijfer < record.RecordCijfer)
                         {
                             _dbContext.RecordHistories.Add(new RecordHistory(record));
                         }
