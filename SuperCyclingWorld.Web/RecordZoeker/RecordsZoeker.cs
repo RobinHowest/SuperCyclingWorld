@@ -37,6 +37,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
 
 
                 GiveClubsThereAantalRecords(clubs);// kan pas gebeuren als alle records zijn toegevoegd aan de recordlist !!
+                SaveAllRecordsForHistory();
 
                 foreach (Record record in RecordList.Records)
                 {
@@ -190,5 +191,31 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             }
         }
 
+        private void SaveAllRecordsForHistory()
+        {
+            List<RecordHistory> recordHistoriesExisting = _dbContext.RecordHistories.OrderBy(rh => rh.Id).ToList();
+            if(recordHistoriesExisting.Count == 0)
+            {
+                foreach(var record in RecordList.Records)
+                {
+                    _dbContext.RecordHistories.Add(new RecordHistory(record));
+                }
+                _dbContext.SaveChanges();
+            }
+            else
+            {
+                foreach(var rh in recordHistoriesExisting)
+                {
+                    foreach (var record in RecordList.Records)
+                    {
+                        if(rh.Recordnaam == record.Recordnaam && rh.RecordCijfer < record.RecordCijfer && rh.WielrennerId == record.Wielrenner.Id && rh.RecordType == record.RecordType)
+                        {
+                            _dbContext.RecordHistories.Add(new RecordHistory(record));
+                        }
+                    }
+                }
+                _dbContext.SaveChanges();
+            }
+        }
     }
 }
