@@ -32,6 +32,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
                 GetWielrenner_Highest_Gemiddelde_KM_rit_Site();
                 GetWielrenner_Highest_Gemiddelde_KM_rit_Club();
                 GetWielrenner_Highest_wattage_site();
+                GetWielrenner_Highest_wattage_Club();
                 //Records
 
 
@@ -150,7 +151,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
         }
         // EINDE RECORD
 
-        //RECORD ------------- Meeste Kilometers/uur (club en siteniveau)
+        //RECORD ------------- Meeste Wattage getrapt (club en siteniveau)
         private void GetWielrenner_Highest_wattage_site()
         {
                 int wattageRecord = _dbContext.Wielrenners.Max(w => w.WattageRecord);
@@ -160,6 +161,19 @@ namespace SuperCyclingWorld.Web.RecordZoeker
                 {
                     RecordList.Records.Add(new Record(wielrenner, Recordtype.Site, "Hoogste wattage (Siteniveau)", wattageRecord, "Watt"));
                 }
+        }
+        private void GetWielrenner_Highest_wattage_Club()
+        {
+            foreach (Club club in _dbContext.Clubs.OrderBy(c => c.Id).ToList())
+            {
+                int wattageRecord = _dbContext.Wielrenners.Where(w => w.ClubId == club.Id).Max(w => w.WattageRecord);
+                List<Wielrenner> wielrennersSelected = _dbContext.Wielrenners.Where(w => w.WattageRecord == wattageRecord && w.ClubId == club.Id).ToList();
+
+                foreach (Wielrenner wielrenner in wielrennersSelected)
+                {
+                    RecordList.Records.Add(new Record(wielrenner, Recordtype.Club, "Hoogste wattage (Clubniveau)", wattageRecord, "Watt"));
+                }
+            }
         }
         // EINDE RECORD
 
