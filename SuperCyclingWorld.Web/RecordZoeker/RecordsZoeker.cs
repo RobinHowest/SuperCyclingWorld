@@ -204,16 +204,17 @@ namespace SuperCyclingWorld.Web.RecordZoeker
             }
             else
             {
-                foreach (var record in RecordList.Records)
+                foreach(var record in RecordList.Records)
                 {
-                    foreach(var rh in recordHistoriesExisting)
+                    foreach (var recordH in recordHistoriesExisting)
                     {
-                        if(record.RecordType == rh.RecordType && record.Wielrenner.Id == rh.WielrennerId && rh.RecordCijfer < record.RecordCijfer)
+                        if(recordH.RecordCijfer < record.RecordCijfer && recordH.WielrennerId == record.Wielrenner.Id && recordH.Recordnaam == record.Recordnaam)
                         {
                             _dbContext.RecordHistories.Add(new RecordHistory(record));
                         }
                     }
                 }
+
                 _dbContext.SaveChanges();
             }
         }

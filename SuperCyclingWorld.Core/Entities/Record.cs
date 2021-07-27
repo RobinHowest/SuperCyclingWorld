@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace SuperCyclingWorld.Core.Entities
 {
     public class Record
@@ -18,6 +19,7 @@ namespace SuperCyclingWorld.Core.Entities
         public Record()
         {
         }
+
 
         public Record(Wielrenner wielrenner, Recordtype recordtype, string recordnaam, int recordcijfer, string recordeenheid)
         {

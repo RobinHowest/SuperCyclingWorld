@@ -16,7 +16,7 @@ namespace SuperCyclingWorld.Web.RecordZoeker
         public string Recordnaam { get; set; }
         public int RecordCijfer { get; set; }
         public string RecordEenheid { get; set; }
-        public Recordtype RecordType { get; set; }
+        public Recordtype? RecordType { get; set; }
         public RecordHistory()
         {
 
